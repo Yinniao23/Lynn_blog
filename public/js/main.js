@@ -1,5 +1,5 @@
 (() => {
-  // ns-hugo-imp:D:\my_blog_flies\myblog\themes\narrow\assets\js\clipboard.js
+  // ns-hugo-imp:D:\my_blog_files\myblog\themes\narrow\assets\js\clipboard.js
   async function copyText(text) {
     if (!navigator.clipboard?.writeText || !window.isSecureContext) {
       return false;
@@ -12,7 +12,7 @@
     }
   }
 
-  // ns-hugo-imp:D:\my_blog_flies\myblog\themes\narrow\assets\js\codeblock.js
+  // ns-hugo-imp:D:\my_blog_files\myblog\themes\narrow\assets\js\codeblock.js
   var COPY_FEEDBACK_MS = 2e3;
   var copyTimers = /* @__PURE__ */ new WeakMap();
   function getCodeBlocks(root = document) {
@@ -142,7 +142,7 @@
     document.addEventListener("click", handleCodeBlockClick);
   }
 
-  // ns-hugo-imp:D:\my_blog_flies\myblog\themes\narrow\assets\js\tabs.js
+  // ns-hugo-imp:D:\my_blog_files\myblog\themes\narrow\assets\js\tabs.js
   var NAV_SHELL_CLASS = "tabs-nav-shell overflow-x-auto px-2 pt-2 pb-1 sm:px-3 sm:pt-3 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
   var NAV_CLASS = "tabs-nav inline-flex min-w-max items-center gap-1 rounded-xl border border-border bg-background/70 p-1 shadow-sm text-muted-foreground";
   var TRIGGER_BASE_CLASS = "tabs-trigger inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3.5 py-1.5 text-sm font-medium transition-[color,background-color,box-shadow] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20";
@@ -289,7 +289,7 @@
     document.addEventListener("keydown", handleKeydown);
   }
 
-  // ns-hugo-imp:D:\my_blog_flies\myblog\themes\narrow\assets\js\ui.js
+  // ns-hugo-imp:D:\my_blog_files\myblog\themes\narrow\assets\js\ui.js
   var ToolDropdown = class {
     constructor(uiManager2) {
       this.ui = uiManager2;
