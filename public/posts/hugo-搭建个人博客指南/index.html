@@ -69,6 +69,9 @@
 <script id="search-config" type="application/json">"{\"searchIndexURL\":\"/index.json\"}"</script>
 
 
+  <script id="gallery-config" type="application/json">"{\"gallery\":true,\"galleryOptions\":{\"columns\":4,\"columnwidth\":200,\"defaultlayout\":\"justified\",\"gap\":10,\"lastrowbehavior\":\"center\",\"targetrowheight\":200},\"lightbox\":true}"</script>
+
+
 
 
 
@@ -109,7 +112,14 @@
 
 
 
+  <script
+    src="https://cdn.jsdelivr.net/npm/smart-gallery@latest/dist/smart-gallery.umd.js"
+    defer
+  ></script>
 
+
+
+        <script src="/js/gallery.js" defer></script>
 
 
 
@@ -924,6 +934,39 @@ hugo version</div>
 </div>
 </li>
 </ol>
+<p>
+<figure
+  class="image-figure not-prose my-8"
+  data-lightbox-enabled="
+    true
+  "
+  data-gallery-type="auto"
+  data-image-width="636"
+  data-image-height="120"
+  data-image-src="/posts/hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/ss1.png"
+>
+  <div class="image-container">
+    <img
+    src="/posts/hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/ss1.png"
+    alt="版本查询结果"
+    
+    
+      
+      
+        
+          width="636" height="120"
+        
+      
+    
+    loading="lazy"
+    decoding="async"
+    data-gallery-src="/posts/hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/ss1.png"
+    data-gallery-alt="版本查询结果"
+    data-gallery-title=""
+  /></div>
+
+  </figure>
+</p>
 <h2 id="二创建项目与安装主题">二、创建项目与安装主题<a href="#%e4%ba%8c%e5%88%9b%e5%bb%ba%e9%a1%b9%e7%9b%ae%e4%b8%8e%e5%ae%89%e8%a3%85%e4%b8%bb%e9%a2%98" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><p>打开 PowerShell，进入你存放代码的目录：</p>
 <div
   class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
@@ -1028,7 +1071,40 @@ git init</div>
     </div>
   </div>
 </div>
-<p>可以在 Hugo 官网选择自己喜欢的主题并安装（以 PaperMod 为例，这是一款功能丰富、UI 现代的主题）：</p>
+<p>可以在 Hugo 官网选择自己喜欢的主题并安装（以 PaperMod 为例，这是一款功能丰富、UI 现代的主题）：
+
+<figure
+  class="image-figure not-prose my-8"
+  data-lightbox-enabled="
+    true
+  "
+  data-gallery-type="auto"
+  data-image-width="2549"
+  data-image-height="1463"
+  data-image-src="/posts/hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/ss2.png"
+>
+  <div class="image-container">
+    <img
+    src="/posts/hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/ss2.png"
+    alt="Hugo官网"
+    
+    
+      
+      
+        
+          width="2549" height="1463"
+        
+      
+    
+    loading="lazy"
+    decoding="async"
+    data-gallery-src="/posts/hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/ss2.png"
+    data-gallery-alt="Hugo官网"
+    data-gallery-title=""
+  /></div>
+
+  </figure>
+</p>
 <div
   class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
   data-code-block

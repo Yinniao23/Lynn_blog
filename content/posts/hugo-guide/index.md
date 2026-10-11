@@ -27,6 +27,8 @@ cover = '/images/placeholder/2.jpg'
    git --version
    hugo version
    ```
+![版本查询结果](ss1.png)
+
 
 ## 二、创建项目与安装主题
 
@@ -44,6 +46,7 @@ git init
 ```
 
 可以在 Hugo 官网选择自己喜欢的主题并安装（以 PaperMod 为例，这是一款功能丰富、UI 现代的主题）：
+![Hugo官网](ss2.png)
 
 ```powershell
 git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod

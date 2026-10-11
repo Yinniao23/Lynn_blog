@@ -1,1 +1,18 @@
-{"background_color":"#ffffff","categories":["blog","technology","education"],"description":"Yinniao 的个人博客 —— 记录技术探索与生活点滴","dir":"ltr","display":"standalone","lang":"zh-CN","name":"Yinniao 的博客","orientation":"portrait-primary","scope":"/","short_name":"Yinniao","start_url":"/","theme_color":"#09090b"}
+{
+  "background_color": "#ffffff",
+  "categories": [
+    "blog",
+    "technology",
+    "education"
+  ],
+  "description": "Yinniao 的个人博客 —— 记录技术探索与生活点滴",
+  "dir": "ltr",
+  "display": "standalone",
+  "lang": "zh-CN",
+  "name": "Yinniao 的博客",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "short_name": "Yinniao",
+  "start_url": "/",
+  "theme_color": "#09090b"
+}
