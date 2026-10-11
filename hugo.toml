@@ -1,7 +1,7 @@
 baseURL = 'https://example.org/'
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = false
-title = 'Yinniao 的博客'
+title = '殷袅的博客'
 theme = "narrow"
 
 hasCJKLanguage = true
@@ -90,7 +90,7 @@ mainSections = ["posts"]
 
 # ==================== 站点参数 ====================
 [params]
-  description = "Yinniao 的个人博客 —— 记录技术探索与生活点滴"
+  description = "殷袅的个人博客 —— 记录一些无聊日常"
   keywords = ["博客", "技术", "编程", "Yinniao", "个人主页"]
   defaultAuthor = "Yinniao"
   language = "zh-CN"
@@ -103,7 +103,7 @@ mainSections = ["posts"]
 
   # 作者信息
   [params.author]
-    name = "Yinniao"
+    name = "殷袅"
     title = "技术探索者 · 博客作者"
     description = "你曾相信并仍渴望相信的那一切，尽管幼稚，却也伟大。"
     avatar = "/images/avatar.jpg"
