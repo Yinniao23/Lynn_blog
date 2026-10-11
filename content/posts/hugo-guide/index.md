@@ -5,7 +5,7 @@ title = 'Hugo 搭建个人博客指南'
 summary = '从零开始使用 Hugo + Narrow 主题搭建个人博客，部署到 GitHub Pages 的完整流程。'
 tags = ['Hugo', '教程', 'GitHub']
 categories = ['技术']
-cover = '/images/placeholder/2.jpg'
+cover = '/images/placeholder/fm2.jpg'
 +++
 
 本文记录了使用 Hugo 框架在 Windows 环境下搭建个人博客，并部署至 GitHub Pages 的完整过程。

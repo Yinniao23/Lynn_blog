@@ -5,7 +5,7 @@ title = '毛玻璃设计美学'
 summary = 'Glassmorphism 毛玻璃效果的设计原理与 CSS 实现，让界面通透而有层次。'
 tags = ['设计', 'CSS', 'UI']
 categories = ['设计']
-cover = '/images/placeholder/3.jpg'
+cover = '/images/placeholder/fm3.jpg'
 +++
 
 **Glassmorphism**（毛玻璃效果）是近年来流行的 UI 设计风格，通过半透明背景与背景模糊营造出通透、有层次的视觉感受。

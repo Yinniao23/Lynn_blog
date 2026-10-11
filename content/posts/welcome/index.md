@@ -5,7 +5,7 @@ title = '欢迎来到我的博客'
 summary = '这是我的第一篇博客，记录建站初衷与未来计划。'
 tags = ['公告', '随笔']
 categories = ['随笔']
-cover = '/images/placeholder/1.jpg'
+cover = '/images/placeholder/fm1.jpg'
 +++
 
 你好，欢迎来到 **Yinniao 的博客**！
