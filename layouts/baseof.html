@@ -1,0 +1,48 @@
+<!doctype html>
+{{- $tocConfig := partial "config/toc.html" . -}}
+{{- $tocPinned := cond $tocConfig.pinned "true" "false" -}}
+<html
+  lang="{{ site.Language.Locale }}"
+  data-theme="{{ site.Params.colorScheme | default `default` }}"
+  data-toc-pinned="{{ $tocPinned }}"
+>
+  <head>
+    {{ partial "layout/head.html" . }}
+    {{ $themeInit := resources.Get "js/theme-init.js" | resources.ExecuteAsTemplate "js/theme-init.js" . | minify }}
+    <script>{{ $themeInit.Content | safeJS }}</script>
+  </head>
+
+  {{- $contentWidth := .Site.Params.contentWidth | default `56rem` -}}
+  {{- $mainStyleAttr := printf `style="--content-width-base: %s; max-width: var(--content-width, var(--content-width-base))"` $contentWidth -}}
+
+
+  <body class="bg-background text-foreground min-h-screen antialiased">
+    <main
+      id="page-container"
+      class="mx-auto w-full"
+      {{ $mainStyleAttr | safeHTMLAttr }}
+    >
+      {{ partial "ui/reading-progress.html" . }}
+
+      {{ partial "navigation/header.html" . }}
+
+
+      <div class="px-4 py-6">
+        {{ partial "navigation/breadcrumb.html" . }}
+        {{ block "main" . }}{{ end }}
+      </div>
+
+      {{ partial "layout/footer.html" . }}
+      {{ partial "ui/dock.html" . }}
+      {{ partial "ui/toc.html" . }}
+      {{ partial "ui/search-modal.html" . }}
+      {{ partial "features/katex.html" . }}
+      {{ partial "features/mermaid.html" . }}
+    </main>
+
+    {{/* Custom UI JS — hover dropdowns + theme persistence */}}
+    {{- with resources.Get "js/custom-ui.js" | js.Build (dict "targetPath" "js/custom-ui.js") }}
+      <script src="{{ .RelPermalink }}" defer></script>
+    {{- end }}
+  </body>
+</html>

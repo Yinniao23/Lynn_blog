@@ -1,4 +1,255 @@
 baseURL = 'https://example.org/'
-locale = 'en-us'
-title = 'My New Hugo Project'
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = false
+title = 'Yinniao 的博客'
 theme = "narrow"
+
+hasCJKLanguage = true
+enableEmoji = true
+
+[languages]
+  [languages.en]
+    locale = 'en'
+    label = 'English'
+    weight = 1
+
+# 页头导航菜单
+[[menus.main]]
+  name = "Posts"
+  pageRef = "/posts"
+  weight = 1
+[[menus.main]]
+  name = "Categories"
+  pageRef = "/categories"
+  weight = 2
+[[menus.main]]
+  name = "Friends"
+  pageRef = "/friends"
+  weight = 3
+[[menus.main]]
+  name = "About"
+  pageRef = "/about"
+  weight = 4
+
+
+# 主内容栏目（影响首页最近文章、搜索、归档）
+mainSections = ["posts"]
+
+[permalinks]
+  posts = "/posts/:slug/"
+  projects = "/projects/:slug/"
+  pages = "/:slug/"
+
+[pagination]
+  pagerSize = 6
+  path = "page"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      strikethrough = true
+      [markup.goldmark.extensions.extras]
+        [markup.goldmark.extensions.extras.delete]
+          enable = true
+        [markup.goldmark.extensions.extras.insert]
+          enable = true
+        [markup.goldmark.extensions.extras.mark]
+          enable = true
+        [markup.goldmark.extensions.extras.subscript]
+          enable = true
+        [markup.goldmark.extensions.extras.superscript]
+          enable = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    lineNos = false
+    lineNumbersInTable = false
+    noClasses = false
+    style = "github"
+    tabWidth = 2
+
+[outputs]
+  home = ["HTML", "RSS", "JSON", "WebAppManifest"]
+
+[outputFormats]
+  [outputFormats.WebAppManifest]
+    mediaType = "application/manifest+json"
+    baseName = "site"
+    isPlainText = true
+
+# ==================== 站点参数 ====================
+[params]
+  description = "Yinniao 的个人博客 —— 记录技术探索与生活点滴"
+  keywords = ["博客", "技术", "编程", "Yinniao", "个人主页"]
+  defaultAuthor = "Yinniao"
+  language = "zh-CN"
+  shortName = "Yinniao"
+  images = ["/images/avatar.jpg"]
+
+  # Favicon（JPEG 格式）
+  [params.favicon]
+    jpg = "/favicon.jpg"
+
+  # 作者信息
+  [params.author]
+    name = "Yinniao"
+    title = "技术探索者 · 博客作者"
+    description = "你曾相信并仍渴望相信的那一切，尽管幼稚，却也伟大。"
+    avatar = "/images/avatar.jpg"
+    [[params.author.social]]
+      name = "GitHub"
+      url = "https://github.com/Yinniao23"
+      icon = "github"
+    [[params.author.social]]
+      name = "Email"
+      url = "mailto:1025614384@qq.com"
+      icon = "email"
+
+  # 页头配置
+  [params.header]
+    sticky = true
+    showThemeSwitch = true
+    showDarkModeSwitch = true
+    showContentWidthSwitch = true
+    showLanguageSwitch = false
+    [params.header.logo]
+      image = "/images/avatar.jpg"
+      link = "/"
+
+  # Dock 显示模式: scroll / always / float
+  dock = "scroll"
+
+  # 内容最大宽度
+  contentWidth = "56rem"
+
+  # 目录 TOC
+  [params.toc]
+    enabled = true
+    position = "side"
+    pinned = false
+
+  # 默认配色方案
+  colorScheme = "nord"
+
+  # 可选配色主题
+  [params.themes.default]
+    name = "Default"
+    order = 1
+  [params.themes.claude]
+    name = "Claude"
+    order = 2
+  [params.themes.bumblebee]
+    name = "Bumblebee"
+    order = 3
+  [params.themes.emerald]
+    name = "Emerald"
+    order = 4
+  [params.themes.nord]
+    name = "Nord"
+    order = 5
+  [params.themes.sunset]
+    name = "Sunset"
+    order = 6
+  [params.themes.abyss]
+    name = "Abyss"
+    order = 7
+  [params.themes.dracula]
+    name = "Dracula"
+    order = 8
+  [params.themes.amethyst]
+    name = "Amethyst"
+    order = 9
+  [params.themes.slate]
+    name = "Slate"
+    order = 10
+  [params.themes.twitter]
+    name = "Twitter"
+    order = 11
+  [params.themes.minimal]
+    name = "Minimal"
+    order = 12
+
+  # 首页配置
+  [params.home]
+    recentPostsCount = 5
+    contentOrder = ["author-section", "page-content", "recent-posts", "guestbook"]
+
+  # 文章配置
+  [params.post]
+    showRelated = true
+    relatedPostsCount = 3
+    [params.post.license]
+      show = false
+
+  # 评论系统（暂不启用外部评论）
+  [params.comments]
+    enabled = false
+
+  # 阅读进度条
+  [params.readingProgress]
+    enabled = true
+    showOnHomepage = false
+
+  # 代码块折叠
+  [params.codeblock]
+    [params.codeblock.collapse]
+      enabled = true
+      defaultState = "expanded"
+      autoCollapseLines = 30
+      autoCollapseHeight = 400
+      collapsedHeight = 120
+
+  # 画廊
+  [params.gallery]
+    enabled = true
+    defaultLayout = "justified"
+    gap = 10
+    targetRowHeight = 200
+    lastRowBehavior = "center"
+    columnWidth = 200
+    columns = 4
+
+  [params.lightbox]
+    enabled = true
+
+  # KaTeX 数学公式
+  [params.katex]
+    enabled = true
+    [[params.katex.delimiters]]
+      left = "$$"
+      right = "$$"
+      display = true
+    [[params.katex.delimiters]]
+      left = "$"
+      right = "$"
+      display = false
+    [[params.katex.delimiters]]
+      left = "\\("
+      right = "\\)"
+      display = false
+    [[params.katex.delimiters]]
+      left = "\\["
+      right = "\\]"
+      display = true
+
+  # Mermaid 图表
+  [params.mermaid]
+    enabled = true
+
+  # 日期格式
+  [params.dateFormat]
+    full = ":date_full"
+    long = ":date_long"
+    medium = ":date_medium"
+    short = ":date_short"

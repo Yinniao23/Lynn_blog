@@ -1,0 +1,75 @@
+{{/* ================================================================
+   Guestbook / Comments — powered by Giscus (GitHub Discussions)
+
+   SETUP REQUIRED (one-time):
+   1. Enable Discussions on repo Yinniao23/Lynn_blog:
+      Settings → General → Features → tick "Discussions"
+   2. Install Giscus App:  https://github.com/apps/giscus
+      Grant access to Yinniao23/Lynn_blog
+   3. Open https://giscus.app  →  enter Yinniao23/Lynn_blog
+      →  choose "Discussion title contains page pathname"
+      →  copy the generated  data-repo-id  and  data-category-id
+      →  paste them below (replace PLACEHOLDER_*)
+   ================================================================ */}}
+
+<section class="guestbook-section mb-12" id="guestbook">
+  <h2 class="text-foreground mb-6 flex items-center gap-2 text-2xl font-bold">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7.9 20A9 9 0 104 16.1L2 22z"/>
+    </svg>
+    <span>Comments</span>
+  </h2>
+
+  <div class="giscus-wrapper rounded-xl border border-border p-4">
+    <script src="https://giscus.app/client.js"
+      data-repo="Yinniao23/Lynn_blog"
+      data-repo-id="PLACEHOLDER_REPO_ID"
+      data-category="Comments"
+      data-category-id="PLACEHOLDER_CATEGORY_ID"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="preferred_color_scheme"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+
+  <p class="text-muted-foreground/60 mt-4 text-center text-xs">
+    Comments are stored in GitHub Discussions. Sign in with GitHub to post.
+  </p>
+</section>
+
+{{/* Sync Giscus theme with site dark/light mode */}}
+<script>
+(function () {
+  function syncGiscusTheme() {
+    var isDark = document.documentElement.classList.contains('dark');
+    var theme = isDark ? 'dark' : 'light';
+    var iframe = document.querySelector('iframe.giscus-frame');
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: theme } } },
+        'https://giscus.app'
+      );
+    }
+  }
+
+  // Sync after Giscus loads
+  window.addEventListener('message', function (event) {
+    if (event.origin === 'https://giscus.app') syncGiscusTheme();
+  });
+
+  // Sync on theme change
+  var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (m) {
+      if (m.attributeName === 'class') syncGiscusTheme();
+    });
+  });
+  observer.observe(document.documentElement, { attributes: true });
+})();
+</script>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on Yinniao 的博客</title>
+		<link>http://localhost:1313/posts/</link>
+		<description>Recent content in Posts on Yinniao 的博客</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 11 Oct 2026 12:00:00 +0800</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>毛玻璃设计美学</title>
+				<link>http://localhost:1313/posts/%E6%AF%9B%E7%8E%BB%E7%92%83%E8%AE%BE%E8%AE%A1%E7%BE%8E%E5%AD%A6/</link>
+				<pubDate>Sun, 11 Oct 2026 12:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/posts/%E6%AF%9B%E7%8E%BB%E7%92%83%E8%AE%BE%E8%AE%A1%E7%BE%8E%E5%AD%A6/</guid>
+				<description>Glassmorphism 毛玻璃效果的设计原理与 CSS 实现，让界面通透而有层次。</description>
+			</item>
+			<item>
+				<title>Hugo 搭建个人博客指南</title>
+				<link>http://localhost:1313/posts/hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/</link>
+				<pubDate>Sun, 11 Oct 2026 11:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/posts/hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/</guid>
+				<description>从零开始使用 Hugo + Narrow 主题搭建个人博客，部署到 GitHub Pages 的完整流程。</description>
+			</item>
+			<item>
+				<title>欢迎来到我的博客</title>
+				<link>http://localhost:1313/posts/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</link>
+				<pubDate>Sun, 11 Oct 2026 10:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/posts/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</guid>
+				<description>这是我的第一篇博客，记录建站初衷与未来计划。</description>
+			</item>
+	</channel>
+</rss>
