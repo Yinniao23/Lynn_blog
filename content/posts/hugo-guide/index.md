@@ -166,7 +166,7 @@ main:
     pageRef: /posts
     weight: 10
     params:
-      icon: posts
+      icon: posts # icon为图标，需确认themes目录下有该文件
   - name: 分类
     pageRef: /categories
     weight: 20

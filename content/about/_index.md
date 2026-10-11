@@ -15,7 +15,7 @@ title = 'About me'
 
 - **编程语言**：C/C++、Python、JavaScript、PHP
 - **前端**：HTML / CSS / Tailwind CSS / Hugo
-- **工具**：Git、Docker、VS Code
+- **工具**：Git、Docker、VS Code  
 ~~上面是未来的我会熟练的技能~~
 
 ## 联系方式

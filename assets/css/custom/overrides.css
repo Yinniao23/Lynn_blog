@@ -24,18 +24,18 @@ body {
 /* Light 模式覆盖：大范围深色渐变 */
 :root:not(.dark) body {
   background-image:
-    radial-gradient(ellipse 160% 120% at 0% 0%,
-      rgba(98, 156, 206, 0.80) 0%,
-      rgba(98, 156, 206, 0.40) 35%,
+    radial-gradient(ellipse 140% 120% at 0% 0%,
+      rgba(98, 156, 206, 0.70) 0%,
+      rgba(98, 156, 206, 0.30) 45%,
       transparent 72%),
-    radial-gradient(ellipse 160% 120% at 100% 0%,
-      rgba(171, 62, 65, 0.70) 0%,
-      rgba(171, 62, 65, 0.35) 35%,
+    radial-gradient(ellipse 140% 110% at 100% 0%,
+      rgba(164, 0, 0, 0.60) 0%,
+      rgba(164, 48, 52, 0.441) 30%,
       transparent 72%),
     linear-gradient(to bottom,
       transparent 0%,
-      rgba(255, 255, 255, 0.5) 40%,
-      #ffffff 72%);
+      rgba(208, 208, 208, 0.5) 40%,
+      #cbcbc8aa 82%);
   background-attachment: fixed;
 }
 

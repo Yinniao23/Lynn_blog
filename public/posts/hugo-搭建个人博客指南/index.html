@@ -58,7 +58,7 @@
 	<meta itemprop="description" content="从零开始使用 Hugo &#43; Narrow 主题搭建个人博客，部署到 GitHub Pages 的完整流程。">
 	<meta itemprop="datePublished" content="2026-10-11T11:00:00+08:00">
 	<meta itemprop="dateModified" content="2026-10-11T11:00:00+08:00">
-	<meta itemprop="wordCount" content="260">
+	<meta itemprop="wordCount" content="2464">
 	<meta itemprop="image" content="http://localhost:1313/images/avatar.jpg">
 	<meta itemprop="keywords" content="Hugo,教程,GitHub">
 
@@ -735,7 +735,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 
-              <span>1 min</span>
+              <span>5 min</span>
             </div>
             
 
@@ -746,7 +746,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
 </svg>
 
-              <span>260 words</span>
+              <span>2464 words</span>
             </div>
             
           </div>
@@ -808,8 +808,29 @@
 
   
   <article class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
-    <p>本文记录使用 Hugo 搭建个人博客并在 GitHub Pages 部署的完整流程。</p>
-<h2 id="1-安装-hugo">1. 安装 Hugo<a href="#1-%e5%ae%89%e8%a3%85-hugo" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><p>在 Windows 上，推荐使用 <code>winget</code> 安装扩展版：</p>
+    <p>本文记录了使用 Hugo 框架在 Windows 环境下搭建个人博客，并部署至 GitHub Pages 的完整过程。</p>
+<h2 id="一环境准备">一、环境准备<a href="#%e4%b8%80%e7%8e%af%e5%a2%83%e5%87%86%e5%a4%87" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><p>需要安装 Git（版本控制）和 Hugo Extended（静态网站生成器）。</p>
+<ol>
+<li>
+<p><strong>安装 Git</strong>
+去 <a
+    href="https://git-scm.com/download/win"target="_blank"
+    class="inline-flex items-center gap-1"
+  >Git 官网<svg class="h-3 w-3 flex-shrink-0" id="external-link" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3h6v6m-11 5L21 3m-3 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+  </a> 下载安装包，双击运行。</p>
+</li>
+<li>
+<p><strong>安装 Hugo Extended</strong>
+去 <a
+    href="https://github.com/gohugoio/hugo/releases/latest"target="_blank"
+    class="inline-flex items-center gap-1"
+  >Hugo Releases<svg class="h-3 w-3 flex-shrink-0" id="external-link" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3h6v6m-11 5L21 3m-3 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+  </a> 下载文件名包含 <code>extended</code> 的 ZIP 包（如 <code>hugo_extended_0.167.0_windows-amd64.zip</code>），解压到任意目录（如 <code>D:\Hugo</code>）。
+在环境变量的“系统变量”中找到 <code>Path</code>，新建一行填入你的目录。</p>
+</li>
+<li>
+<p><strong>验证安装</strong>
+重新打开 PowerShell，输入以下命令检查是否安装成功：</p>
 <div
   class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
   data-code-block
@@ -878,8 +899,10 @@
 
   
   <div class="code-block-content relative" id="code-0">
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">winget</span> <span class="n">install</span> <span class="n">Hugo</span><span class="p">.</span><span class="py">Hugo</span><span class="p">.</span><span class="n">Extended</span></span></span></code></pre></div>
-    <div hidden data-code-source>winget install Hugo.Hugo.Extended</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">git</span> <span class="p">-</span><span class="n">-version</span>
+</span></span><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">version</span></span></span></code></pre></div>
+    <div hidden data-code-source>git --version
+hugo version</div>
     
     <div
       class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
@@ -899,7 +922,9 @@
     </div>
   </div>
 </div>
-<p>验证安装：</p>
+</li>
+</ol>
+<h2 id="二创建项目与安装主题">二、创建项目与安装主题<a href="#%e4%ba%8c%e5%88%9b%e5%bb%ba%e9%a1%b9%e7%9b%ae%e4%b8%8e%e5%ae%89%e8%a3%85%e4%b8%bb%e9%a2%98" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><p>打开 PowerShell，进入你存放代码的目录：</p>
 <div
   class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
   data-code-block
@@ -923,7 +948,7 @@
 </svg>
       </div>
       <span class="text-muted-foreground text-sm font-medium">
-        BASH
+        POWERSHELL
       </span>
     </div>
 
@@ -968,8 +993,22 @@
 
   
   <div class="code-block-content relative" id="code-1">
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo version</span></span></code></pre></div>
-    <div hidden data-code-source>hugo version</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 创建站点目录（将其中的 [你的博客文件夹名] 替换为你喜欢的名字，如 my-blog）</span>
+</span></span><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">new</span> <span class="n">site</span> <span class="p">[</span><span class="n">你的博客文件夹名</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># 进入站点目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd </span><span class="p">[</span><span class="n">你的博客文件夹名</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># 初始化 Git 仓库</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">init</span></span></span></code></pre></div>
+    <div hidden data-code-source># 创建站点目录（将其中的 [你的博客文件夹名] 替换为你喜欢的名字，如 my-blog）
+hugo new site [你的博客文件夹名]
+
+# 进入站点目录
+cd [你的博客文件夹名]
+
+# 初始化 Git 仓库
+git init</div>
     
     <div
       class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
@@ -989,7 +1028,8 @@
     </div>
   </div>
 </div>
-<h2 id="2-创建站点">2. 创建站点<a href="#2-%e5%88%9b%e5%bb%ba%e7%ab%99%e7%82%b9" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><div
+<p>可以在 Hugo 官网选择自己喜欢的主题并安装（以 PaperMod 为例，这是一款功能丰富、UI 现代的主题）：</p>
+<div
   class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
   data-code-block
   data-code-id="code-2"
@@ -1012,7 +1052,7 @@
 </svg>
       </div>
       <span class="text-muted-foreground text-sm font-medium">
-        BASH
+        POWERSHELL
       </span>
     </div>
 
@@ -1057,10 +1097,8 @@
 
   
   <div class="code-block-content relative" id="code-2">
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo new site myblog
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> myblog</span></span></code></pre></div>
-    <div hidden data-code-source>hugo new site myblog
-cd myblog</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">adityatelange</span><span class="p">/</span><span class="nb">hugo-PaperMod</span><span class="p">.</span><span class="py">git</span> <span class="n">themes</span><span class="p">/</span><span class="n">PaperMod</span></span></span></code></pre></div>
+    <div hidden data-code-source>git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod</div>
     
     <div
       class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
@@ -1080,7 +1118,7 @@ cd myblog</div>
     </div>
   </div>
 </div>
-<h2 id="3-添加主题">3. 添加主题<a href="#3-%e6%b7%bb%e5%8a%a0%e4%b8%bb%e9%a2%98" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><p>将 Narrow 主题作为 git submodule 添加：</p>
+<p>安装完成后，用编辑器打开根目录下的 <code>hugo.toml</code> 文件，修改为以下基础配置：</p>
 <div
   class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
   data-code-block
@@ -1104,7 +1142,7 @@ cd myblog</div>
 </svg>
       </div>
       <span class="text-muted-foreground text-sm font-medium">
-        BASH
+        TOML
       </span>
     </div>
 
@@ -1149,10 +1187,14 @@ cd myblog</div>
 
   
   <div class="code-block-content relative" id="code-3">
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git init
-</span></span><span class="line"><span class="cl">git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</span></span></code></pre></div>
-    <div hidden data-code-source>git init
-git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">baseURL</span> <span class="p">=</span> <span class="s2">&#34;https://[你的GitHub用户名].github.io/[你的仓库名]/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">languageCode</span> <span class="p">=</span> <span class="s2">&#34;zh-cn&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">title</span> <span class="p">=</span> <span class="s2">&#34;[你的博客标题]&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">theme</span> <span class="p">=</span> <span class="s2">&#34;PaperMod&#34;</span></span></span></code></pre></div>
+    <div hidden data-code-source>baseURL = &#34;https://[你的GitHub用户名].github.io/[你的仓库名]/&#34;
+languageCode = &#34;zh-cn&#34;
+title = &#34;[你的博客标题]&#34;
+theme = &#34;PaperMod&#34;</div>
     
     <div
       class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
@@ -1172,8 +1214,8 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
     </div>
   </div>
 </div>
-<p>然后在 <code>hugo.toml</code> 中设置：</p>
-<div
+<p><em>注意：<code>baseURL</code> 末尾必须带有斜杠 <code>/</code>，否则线上部署时会导致样式丢失。</em></p>
+<h2 id="三写作与本地预览">三、写作与本地预览<a href="#%e4%b8%89%e5%86%99%e4%bd%9c%e4%b8%8e%e6%9c%ac%e5%9c%b0%e9%a2%84%e8%a7%88" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><div
   class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
   data-code-block
   data-code-id="code-4"
@@ -1196,7 +1238,7 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
 </svg>
       </div>
       <span class="text-muted-foreground text-sm font-medium">
-        TOML
+        POWERSHELL
       </span>
     </div>
 
@@ -1241,8 +1283,10 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
 
   
   <div class="code-block-content relative" id="code-4">
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">theme</span> <span class="p">=</span> <span class="s2">&#34;narrow&#34;</span></span></span></code></pre></div>
-    <div hidden data-code-source>theme = &#34;narrow&#34;</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 创建第一篇文章</span>
+</span></span><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">new</span> <span class="n">posts</span><span class="p">/</span><span class="nb">my-first</span><span class="n">-post</span><span class="p">.</span><span class="n">md</span></span></span></code></pre></div>
+    <div hidden data-code-source># 创建第一篇文章
+hugo new posts/my-first-post.md</div>
     
     <div
       class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
@@ -1262,7 +1306,9 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
     </div>
   </div>
 </div>
-<h2 id="4-创建文章">4. 创建文章<a href="#4-%e5%88%9b%e5%bb%ba%e6%96%87%e7%ab%a0" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><div
+<p>打开 <code>content/posts/my-first-post.md</code> 文件，将文件头部的 <code>draft: true</code> 修改为 <code>draft: false</code>（草稿状态无法在正式构建中发布）。</p>
+<p>启动本地开发服务器进行预览：</p>
+<div
   class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
   data-code-block
   data-code-id="code-5"
@@ -1285,7 +1331,7 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
 </svg>
       </div>
       <span class="text-muted-foreground text-sm font-medium">
-        BASH
+        POWERSHELL
       </span>
     </div>
 
@@ -1330,8 +1376,8 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
 
   
   <div class="code-block-content relative" id="code-5">
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo new posts/my-first-post/index.md</span></span></code></pre></div>
-    <div hidden data-code-source>hugo new posts/my-first-post/index.md</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">server</span> <span class="n">-D</span></span></span></code></pre></div>
+    <div hidden data-code-source>hugo server -D</div>
     
     <div
       class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
@@ -1351,7 +1397,16 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
     </div>
   </div>
 </div>
-<h2 id="5-本地预览">5. 本地预览<a href="#5-%e6%9c%ac%e5%9c%b0%e9%a2%84%e8%a7%88" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><div
+<p>打开浏览器访问 <code>http://localhost:1313/</code>，当你修改文章或配置时，页面会自动刷新。按 <code>Ctrl+C</code> 可停止本地服务。</p>
+<h2 id="四部署到-github-pages">四、部署到 GitHub Pages<a href="#%e5%9b%9b%e9%83%a8%e7%bd%b2%e5%88%b0-github-pages" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><ol>
+<li>
+<p><strong>创建 GitHub 仓库</strong>
+登录 GitHub，新建一个仓库，名称推荐用英文（如 <code>my-blog</code>），<strong>不要</strong>勾选初始化 README 等选项。记下仓库地址：<code>https://github.com/[你的GitHub用户名]/[你的仓库名].git</code>。</p>
+</li>
+<li>
+<p><strong>关联远程仓库并推送</strong>
+在项目根目录的 PowerShell 中执行：</p>
+<div
   class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
   data-code-block
   data-code-id="code-6"
@@ -1374,7 +1429,7 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
 </svg>
       </div>
       <span class="text-muted-foreground text-sm font-medium">
-        BASH
+        POWERSHELL
       </span>
     </div>
 
@@ -1419,8 +1474,16 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
 
   
   <div class="code-block-content relative" id="code-6">
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server -D</span></span></code></pre></div>
-    <div hidden data-code-source>hugo server -D</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/[</span><span class="n">你的GitHub用户名</span><span class="p">]/[</span><span class="n">你的仓库名</span><span class="p">].</span><span class="py">git</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">branch</span> <span class="n">-M</span> <span class="n">main</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;Initial commit&#34;</span> <span class="c"># 文档更新的提示信息</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span></span></span></code></pre></div>
+    <div hidden data-code-source>git remote add origin https://github.com/[你的GitHub用户名]/[你的仓库名].git
+git branch -M main
+git add .
+git commit -m &#34;Initial commit&#34; # 文档更新的提示信息
+git push origin main</div>
     
     <div
       class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
@@ -1440,13 +1503,548 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
     </div>
   </div>
 </div>
-<p>打开 <code>http://localhost:1313</code> 即可预览。</p>
-<h2 id="6-部署到-github-pages">6. 部署到 GitHub Pages<a href="#6-%e9%83%a8%e7%bd%b2%e5%88%b0-github-pages" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><ol>
-<li>在 GitHub 创建仓库 <code>&lt;username&gt;.github.io</code></li>
-<li>配置 GitHub Actions 自动构建部署</li>
-<li>推送代码即可自动发布</li>
+<p><em>如果报错提示 <code>Author identity unknown</code>，请运行 <code>git config --global user.email &quot;你的邮箱&quot;</code> 和 <code>git config --global user.name &quot;你的用户名&quot;</code> 后重新提交。</em></p>
+</li>
+<li>
+<p><strong>配置 GitHub Actions 自动部署</strong>
+在项目根目录创建 <code>.github/workflows/hugo.yaml</code> 文件，填入以下内容：</p>
+<div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-7"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+</svg>
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        YAML
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="Expand"
+          data-label-collapse="Collapse"
+          title="Collapse"
+          aria-label="Collapse"
+          aria-controls="code-7"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+</svg>
+          </span>
+          <span class="collapse-text hidden sm:inline">Collapse</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="Copy"
+        data-label-copied="Copied"
+        title="Copy"
+        aria-label="Copy"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+</svg>
+        </span>
+        <span class="copy-text hidden sm:inline">Copy</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-7">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy Hugo site to Pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;main&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">permissions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l">read</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pages</span><span class="p">:</span><span class="w"> </span><span class="l">write</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l">write</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">HUGO_VERSION</span><span class="p">:</span><span class="w"> </span><span class="m">0.167.0</span><span class="w"> </span><span class="c"># 必须大于等于主题要求的最低版本，且与你本地一致</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="l">recursive</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/configure-pages@v4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install Hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
+</span></span></span><span class="line"><span class="cl"><span class="sd">          sudo dpkg -i ${{ runner.temp }}/hugo.deb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">hugo --minify --baseURL &#34;${{ steps.pages.outputs.base_url }}/&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Upload artifact</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/upload-pages-artifact@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">./public</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">github-pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">${{ steps.deployment.outputs.page_url }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy to GitHub Pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">deployment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/deploy-pages@v4</span></span></span></code></pre></div>
+    <div hidden data-code-source>name: Deploy Hugo site to Pages
+
+on:
+  push:
+    branches: [&#34;main&#34;]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.167.0 # 必须大于等于主题要求的最低版本，且与你本地一致
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+
+      - name: Install Hugo
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
+          sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - name: Build
+        run: hugo --minify --baseURL &#34;${{ steps.pages.outputs.base_url }}/&#34;
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="Expand"
+        title="Expand"
+      >
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+</svg>
+      </button>
+    </div>
+  </div>
+</div>
+</li>
+<li>
+<p><strong>启用 Pages</strong>
+将上述改动推送到 GitHub 后，进入仓库的 <strong>Settings -&gt; Pages</strong>，将 <strong>Source</strong> 改为 <strong>GitHub Actions</strong>。每次推送到 <code>main</code> 分支，Actions 都会自动构建并发布。网址为 <code>https://[你的GitHub用户名].github.io/[你的仓库名]/</code>。</p>
+</li>
 </ol>
-<h2 id="小结">小结<a href="#%e5%b0%8f%e7%bb%93" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><p>Hugo 构建速度极快，配合 Narrow 主题的 Tailwind CSS 4.0，可以轻松打造美观的个人博客。整个流程不到一小时就能上线。</p>
+<h2 id="五域名绑定与个性化设置">五、域名绑定与个性化设置<a href="#%e4%ba%94%e5%9f%9f%e5%90%8d%e7%bb%91%e5%ae%9a%e4%b8%8e%e4%b8%aa%e6%80%a7%e5%8c%96%e8%ae%be%e7%bd%ae" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><h3 id="1-绑定自定义域名">1. 绑定自定义域名<a href="#1-%e7%bb%91%e5%ae%9a%e8%87%aa%e5%ae%9a%e4%b9%89%e5%9f%9f%e5%90%8d" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h3><p>在域名服务商处添加 4 条 A 记录，主机记录填 <code>@</code>，记录值分别为 <code>185.199.108.153</code>、<code>185.199.109.153</code>、<code>185.199.110.153</code>、<code>185.199.111.153</code>。在 GitHub Pages 设置中填入你的自定义域名 <code>[你的域名]</code>，并勾选 Enforce HTTPS。</p>
+<h3 id="2-配置导航菜单">2. 配置导航菜单<a href="#2-%e9%85%8d%e7%bd%ae%e5%af%bc%e8%88%aa%e8%8f%9c%e5%8d%95" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h3><p>在 <code>config/_default/</code> 目录下创建 <code>menus.zh-hans.yaml</code>，配置顶栏、底栏和社交链接：</p>
+<div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-8"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+</svg>
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        YAML
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="Expand"
+          data-label-collapse="Collapse"
+          title="Collapse"
+          aria-label="Collapse"
+          aria-controls="code-8"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+</svg>
+          </span>
+          <span class="collapse-text hidden sm:inline">Collapse</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="Copy"
+        data-label-copied="Copied"
+        title="Copy"
+        aria-label="Copy"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+</svg>
+        </span>
+        <span class="copy-text hidden sm:inline">Copy</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-8">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># 请查看自己对应主题的建设文档</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">main</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">文章</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">pageRef</span><span class="p">:</span><span class="w"> </span><span class="l">/posts</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l">posts</span><span class="w"> </span><span class="c"># icon为图标，需确认themes目录下有该文件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">分类</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">pageRef</span><span class="p">:</span><span class="w"> </span><span class="l">/categories</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l">tags</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">友链</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">pageRef</span><span class="p">:</span><span class="w"> </span><span class="l">/friends</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l">related</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">关于</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">pageRef</span><span class="p">:</span><span class="w"> </span><span class="l">/about</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">40</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l">about</span></span></span></code></pre></div>
+    <div hidden data-code-source># 请查看自己对应主题的建设文档
+main:
+  - name: 文章
+    pageRef: /posts
+    weight: 10
+    params:
+      icon: posts # icon为图标，需确认themes目录下有该文件
+  - name: 分类
+    pageRef: /categories
+    weight: 20
+    params:
+      icon: tags
+  - name: 友链
+    pageRef: /friends
+    weight: 30
+    params:
+      icon: related
+  - name: 关于
+    pageRef: /about
+    weight: 40
+    params:
+      icon: about</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="Expand"
+        title="Expand"
+      >
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+</svg>
+      </button>
+    </div>
+  </div>
+</div>
+<p>创建对应的页面（以 about 和 friends 为例）：</p>
+<div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-9"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+</svg>
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        POWERSHELL
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="Expand"
+          data-label-collapse="Collapse"
+          title="Collapse"
+          aria-label="Collapse"
+          aria-controls="code-9"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+</svg>
+          </span>
+          <span class="collapse-text hidden sm:inline">Collapse</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="Copy"
+        data-label-copied="Copied"
+        title="Copy"
+        aria-label="Copy"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+</svg>
+        </span>
+        <span class="copy-text hidden sm:inline">Copy</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-9">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">new</span> <span class="n">about</span><span class="p">/</span><span class="n">_index</span><span class="p">.</span><span class="nb">md
+</span></span></span><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">new</span> <span class="n">friends</span><span class="p">/</span><span class="n">_index</span><span class="p">.</span><span class="n">md</span></span></span></code></pre></div>
+    <div hidden data-code-source>hugo new about/_index.md
+hugo new friends/_index.md</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="Expand"
+        title="Expand"
+      >
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+</svg>
+      </button>
+    </div>
+  </div>
+</div>
+<p>创建后将这两个文件内的 <code>draft: true</code> 改为 <code>draft: false</code>。</p>
+<h3 id="3-配置头像与自定义-css">3. 配置头像与自定义 CSS<a href="#3-%e9%85%8d%e7%bd%ae%e5%a4%b4%e5%83%8f%e4%b8%8e%e8%87%aa%e5%ae%9a%e4%b9%89-css" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h3><p>将头像图片（如 <code>avatar.jpg</code>）放入 <code>static/images/</code> 目录，在 <code>hugo.toml</code> 中配置：</p>
+<div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-10"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+</svg>
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        TOML
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="Expand"
+          data-label-collapse="Collapse"
+          title="Collapse"
+          aria-label="Collapse"
+          aria-controls="code-10"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+</svg>
+          </span>
+          <span class="collapse-text hidden sm:inline">Collapse</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="Copy"
+        data-label-copied="Copied"
+        title="Copy"
+        aria-label="Copy"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+</svg>
+        </span>
+        <span class="copy-text hidden sm:inline">Copy</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-10">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">logo</span> <span class="p">=</span> <span class="s2">&#34;/images/avatar.jpg&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">customCSS</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;css/custom.css&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">author</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;[你的昵称]&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">avatar</span> <span class="p">=</span> <span class="s2">&#34;/images/avatar.jpg&#34;</span></span></span></code></pre></div>
+    <div hidden data-code-source>[params]
+  logo = &#34;/images/avatar.jpg&#34;
+  customCSS = [&#34;css/custom.css&#34;]
+
+[params.author]
+  name = &#34;[你的昵称]&#34;
+  avatar = &#34;/images/avatar.jpg&#34;</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="Expand"
+        title="Expand"
+      >
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+</svg>
+      </button>
+    </div>
+  </div>
+</div>
+<h2 id="六常见问题与避坑指南">六、常见问题与避坑指南<a href="#%e5%85%ad%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e4%b8%8e%e9%81%bf%e5%9d%91%e6%8c%87%e5%8d%97" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg></a></h2><ol>
+<li><strong>报错 <code>Author identity unknown</code></strong>
+运行 <code>git config --global user.email &quot;你的邮箱&quot;</code> 和 <code>git config --global user.name &quot;你的名字&quot;</code> 配置身份即可。</li>
+<li><strong>报错 <code>Failed to connect to github.com port 443</code></strong>
+这通常是因为网络限制。检查代理软件的 HTTP 端口（如 Clash 的 7890），在 PowerShell 中运行 <code>git config --global http.proxy http://127.0.0.1:7890</code> 和 <code>git config --global https.proxy http://127.0.0.1:7890</code>。如果仍不行，可以直接在 GitHub 网页端手动编辑或上传文件。</li>
+<li><strong>Actions 构建失败提示找不到主题</strong>
+检查 <code>.github/workflows/hugo.yaml</code> 的 <code>actions/checkout</code> 步骤是否包含 <code>submodules: recursive</code>。</li>
+<li><strong>构建失败提示版本不兼容或找不到模板</strong>
+检查工作流中的 <code>HUGO_VERSION</code> 是否大于等于主题要求的最低版本。</li>
+<li><strong><code>git push</code> 前提示需要 <code>git pull</code></strong>
+按照提示执行 <code>git pull</code>，若进入 Vim 编辑器界面，按 <code>Esc</code> 后输入 <code>:wq</code> 保存退出，解决冲突后再推送。</li>
+</ol>
+<hr>
+<p>本文首发于 [Yinniao]，转载请注明出处。</p>
 
   </article>
 
@@ -1793,13 +2391,18 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
               >
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#1-安装-hugo">1. 安装 Hugo</a></li>
-    <li><a href="#2-创建站点">2. 创建站点</a></li>
-    <li><a href="#3-添加主题">3. 添加主题</a></li>
-    <li><a href="#4-创建文章">4. 创建文章</a></li>
-    <li><a href="#5-本地预览">5. 本地预览</a></li>
-    <li><a href="#6-部署到-github-pages">6. 部署到 GitHub Pages</a></li>
-    <li><a href="#小结">小结</a></li>
+    <li><a href="#一环境准备">一、环境准备</a></li>
+    <li><a href="#二创建项目与安装主题">二、创建项目与安装主题</a></li>
+    <li><a href="#三写作与本地预览">三、写作与本地预览</a></li>
+    <li><a href="#四部署到-github-pages">四、部署到 GitHub Pages</a></li>
+    <li><a href="#五域名绑定与个性化设置">五、域名绑定与个性化设置</a>
+      <ul>
+        <li><a href="#1-绑定自定义域名">1. 绑定自定义域名</a></li>
+        <li><a href="#2-配置导航菜单">2. 配置导航菜单</a></li>
+        <li><a href="#3-配置头像与自定义-css">3. 配置头像与自定义 CSS</a></li>
+      </ul>
+    </li>
+    <li><a href="#六常见问题与避坑指南">六、常见问题与避坑指南</a></li>
   </ul>
 </nav>
               </div>
@@ -1957,6 +2560,46 @@ git submodule add https://github.com/tom2almighty/hugo-narrow themes/narrow</div
       
 
 
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css"
+    integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP"
+    crossorigin="anonymous"
+  />
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"
+    integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
+    integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh"
+    crossorigin="anonymous"
+  ></script>
+
+  <script>
+    function initKaTeX() {
+      if (typeof renderMathInElement === "undefined") {
+        setTimeout(initKaTeX, 100);
+        return;
+      }renderMathInElement(document.body, {
+        delimiters: [{"display":true,"left":"$$","right":"$$"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"},{"display":true,"left":"\\[","right":"\\]"}],
+        throwOnError: false,
+        errorColor: "#cc0000",
+        fleqn: false,
+        leqno: false,
+        trust: false,
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initKaTeX, { once: true });
+    } else {
+      initKaTeX();
+    }
+  </script>
       
 
 

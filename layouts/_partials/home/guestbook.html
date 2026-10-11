@@ -1,17 +1,3 @@
-{{/* ================================================================
-   Guestbook / Comments — powered by Giscus (GitHub Discussions)
-
-   SETUP REQUIRED (one-time):
-   1. Enable Discussions on repo Yinniao23/Lynn_blog:
-      Settings → General → Features → tick "Discussions"
-   2. Install Giscus App:  https://github.com/apps/giscus
-      Grant access to Yinniao23/Lynn_blog
-   3. Open https://giscus.app  →  enter Yinniao23/Lynn_blog
-      →  choose "Discussion title contains page pathname"
-      →  copy the generated  data-repo-id  and  data-category-id
-      →  paste them below (replace PLACEHOLDER_*)
-   ================================================================ */}}
-
 <section class="guestbook-section mb-12" id="guestbook">
   <h2 class="text-foreground mb-6 flex items-center gap-2 text-2xl font-bold">
     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -20,54 +6,43 @@
     <span>Comments</span>
   </h2>
 
-  <div class="giscus-wrapper rounded-xl border border-border p-4">
-    <script src="https://giscus.app/client.js"
-      data-repo="Yinniao23/Lynn_blog"
-      data-repo-id="PLACEHOLDER_REPO_ID"
-      data-category="Comments"
-      data-category-id="PLACEHOLDER_CATEGORY_ID"
-      data-mapping="pathname"
-      data-strict="0"
-      data-reactions-enabled="1"
-      data-emit-metadata="0"
-      data-input-position="top"
-      data-theme="preferred_color_scheme"
-      data-lang="en"
-      data-loading="lazy"
+  {{/* Utterances 评论组件 */}}
+  <div class="utterances-wrapper rounded-xl border border-border p-4">
+    <script src="https://utteranc.es/client.js"
+      repo="Yinniao23/Lynn_blog"
+      issue-term="pathname"
+      label="comment"
+      theme="preferred-color-scheme"
       crossorigin="anonymous"
       async>
     </script>
   </div>
-
-  <p class="text-muted-foreground/60 mt-4 text-center text-xs">
-    Comments are stored in GitHub Discussions. Sign in with GitHub to post.
-  </p>
 </section>
 
-{{/* Sync Giscus theme with site dark/light mode */}}
+{{/* Sync Utterances theme with site dark/light mode */}}
 <script>
 (function () {
-  function syncGiscusTheme() {
+  function syncUtterancesTheme() {
     var isDark = document.documentElement.classList.contains('dark');
-    var theme = isDark ? 'dark' : 'light';
-    var iframe = document.querySelector('iframe.giscus-frame');
+    var theme = isDark ? 'github-dark' : 'github-light';
+    var iframe = document.querySelector('.utterances-frame');
     if (iframe) {
       iframe.contentWindow.postMessage(
-        { giscus: { setConfig: { theme: theme } } },
-        'https://giscus.app'
+        { type: 'set-theme', theme: theme },
+        'https://utteranc.es'
       );
     }
   }
 
-  // Sync after Giscus loads
+  // Sync after Utterances loads
   window.addEventListener('message', function (event) {
-    if (event.origin === 'https://giscus.app') syncGiscusTheme();
+    if (event.origin === 'https://utteranc.es') syncUtterancesTheme();
   });
 
   // Sync on theme change
   var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (m) {
-      if (m.attributeName === 'class') syncGiscusTheme();
+      if (m.attributeName === 'class') syncUtterancesTheme();
     });
   });
   observer.observe(document.documentElement, { attributes: true });
