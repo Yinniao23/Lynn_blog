@@ -72,8 +72,51 @@
         });
       }
     }
+    function setupScrollReveal() {
+      var revealSelectors = [
+        ".friend-card",
+        ".prose > *",
+        ".post-meta",
+        "section.guestbook-section",
+        ".utterances-wrapper",
+        "header.mb-8",
+        ".bg-card.border-border.rounded-xl"
+      ];
+      var elements = [];
+      revealSelectors.forEach(function(sel) {
+        document.querySelectorAll(sel).forEach(function(el) {
+          var rect = el.getBoundingClientRect();
+          if (rect.top > window.innerHeight * 0.85) {
+            el.classList.add("scroll-reveal");
+            elements.push(el);
+          }
+        });
+      });
+      if (elements.length === 0) return;
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(
+          function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+        );
+        elements.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        elements.forEach(function(el) {
+          el.classList.add("is-visible");
+        });
+      }
+    }
     function init() {
       setupHoverDropdowns();
+      setupScrollReveal();
     }
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", init);

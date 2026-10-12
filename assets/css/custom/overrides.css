@@ -200,10 +200,54 @@ article.group h3 {
 }
 
 /* ================================================================
-   11. 链接下划线动画
-   ================================================================ */
+    11. 链接下划线动画
+    ================================================================ */
 .prose a {
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+/* ================================================================
+    12. 页面切换过渡 — 主内容区淡入 + 微上滑
+    ================================================================ */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#page-container {
+  animation: pageEnter 0.4s ease-out both;
+}
+
+/* ================================================================
+    13. 滚动揭示 — 视口下方元素渐入
+    ================================================================ */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 尊重减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  #page-container {
+    animation: none;
+  }
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

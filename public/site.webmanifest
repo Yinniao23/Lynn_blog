@@ -5,11 +5,11 @@
     "technology",
     "education"
   ],
-  "description": "Yinniao 的个人博客 —— 记录技术探索与生活点滴",
+  "description": "殷袅的个人博客 —— 记录一些无聊日常",
   "dir": "ltr",
   "display": "standalone",
   "lang": "zh-CN",
-  "name": "Yinniao 的博客",
+  "name": "殷袅的博客",
   "orientation": "portrait-primary",
   "scope": "/",
   "short_name": "Yinniao",
