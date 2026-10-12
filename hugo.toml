@@ -1,7 +1,7 @@
 baseURL = 'https://example.org/'
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = false
-title = '殷袅的博客'
+title = '殷袅的博客 - Blessing you'
 theme = "narrow"
 
 hasCJKLanguage = true

@@ -79,8 +79,7 @@
         ".post-meta",
         "section.guestbook-section",
         ".utterances-wrapper",
-        "header.mb-8",
-        ".bg-card.border-border.rounded-xl"
+        "header.mb-8"
       ];
       var elements = [];
       revealSelectors.forEach(function(sel) {

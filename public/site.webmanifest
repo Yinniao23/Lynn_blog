@@ -1,18 +1,1 @@
-{
-  "background_color": "#ffffff",
-  "categories": [
-    "blog",
-    "technology",
-    "education"
-  ],
-  "description": "殷袅的个人博客 —— 记录一些无聊日常",
-  "dir": "ltr",
-  "display": "standalone",
-  "lang": "zh-CN",
-  "name": "殷袅的博客",
-  "orientation": "portrait-primary",
-  "scope": "/",
-  "short_name": "Yinniao",
-  "start_url": "/",
-  "theme_color": "#09090b"
-}
+{"background_color":"#ffffff","categories":["blog","technology","education"],"description":"殷袅的个人博客 —— 记录一些无聊日常","dir":"ltr","display":"standalone","lang":"zh-CN","name":"殷袅的博客 - Blessing you","orientation":"portrait-primary","scope":"/","short_name":"Yinniao","start_url":"/","theme_color":"#09090b"}

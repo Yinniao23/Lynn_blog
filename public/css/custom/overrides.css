@@ -63,6 +63,43 @@ article.group > a > div:hover {
 }
 
 /* ================================================================
+   2b. 友链卡片 — 与文章卡片一致的毛玻璃，悬停保持透明度
+   ================================================================ */
+.friend-card {
+  background: color-mix(in srgb, var(--color-card) 50%, transparent) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent) !important;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.friend-card:hover {
+  background: color-mix(in srgb, var(--color-card) 65%, transparent) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 35%, transparent) !important;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 12%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* 暗色模式微调 */
+.dark .friend-card {
+  background: color-mix(in srgb, var(--color-card) 55%, transparent) !important;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.dark .friend-card:hover {
+  background: color-mix(in srgb, var(--color-card) 70%, transparent) !important;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 15%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ================================================================
    3. 首页作者卡片 — 毛玻璃效果
    ================================================================ */
 .author-section > div {
@@ -209,17 +246,13 @@ article.group h3 {
 }
 
 /* ================================================================
-    12. 页面切换过渡 — 主内容区淡入 + 微上滑
+    12. 页面切换过渡 — 仅用 opacity，不用 transform
+    （transform 会为 position:fixed 子元素创建新包含块，
+     破坏 dock / TOC / 搜索弹窗的视口定位）
     ================================================================ */
 @keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 #page-container {
@@ -240,6 +273,58 @@ article.group h3 {
   transform: translateY(0);
 }
 
+/* ================================================================
+    14. 卡片烟雾流光悬停效果
+    — 鼠标移入时一团古朴色烟雾从右上飘到左下，扩散消散
+    — 色调：红 黄 青 蓝（古朴偏暗），大面积模糊，自然过渡
+    ================================================================ */
+@keyframes smokeSweep {
+  0% {
+    transform: translate(55%, -55%) scale(0.4);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-55%, 55%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* 文章卡片 + 友链卡片 */
+article.group > a > div::after,
+.friend-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    225deg,
+    transparent 5%,
+    rgba(170, 65, 45, 0.32) 22%,
+    rgba(195, 165, 55, 0.32) 42%,
+    rgba(65, 140, 150, 0.32) 62%,
+    rgba(55, 90, 140, 0.32) 82%,
+    transparent 95%
+  );
+  filter: blur(28px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(55%, -55%) scale(0.4);
+}
+
+article.group > a > div:hover::after,
+.friend-card:hover::after {
+  animation: smokeSweep 1.0s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+}
+
 /* 尊重减少动画偏好 */
 @media (prefers-reduced-motion: reduce) {
   #page-container {
@@ -249,5 +334,9 @@ article.group h3 {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  article.group > a > div:hover::after,
+  .friend-card:hover::after {
+    animation: none;
   }
 }

@@ -19,7 +19,7 @@
            rel="noopener noreferrer"
            class="friend-card group bg-card border-border hover:border-primary/30 hover:bg-primary/5 focus:ring-primary/20 relative flex items-center gap-4 overflow-hidden rounded-xl border p-4 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg focus:ring-2 focus:outline-none">
           {{/* 头像 */}}
-          <div class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-muted">
+          <div class="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-muted">
             <img src="{{ .avatar }}"
                  alt="{{ .name }}"
                  class="h-full w-full object-cover"
@@ -27,11 +27,11 @@
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-foreground text-lg font-bold\'>{{ (substr .name 0 1) }}</span>'">
           </div>
           {{/* 昵称 + 描述 */}}
-          <div class="min-w-0 flex-1">
+          <div class="min-w-0 w-full">
             <h3 class="text-foreground group-hover:text-primary truncate text-base font-bold transition-colors duration-200">
               {{ .name }}
             </h3>
-            <p class="text-muted-foreground truncate text-sm">
+            <p class="text-muted-foreground line-clamp-2 text-sm">
               {{ .description }}
             </p>
           </div>
