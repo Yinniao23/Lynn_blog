@@ -1,0 +1,51 @@
+{{ define "main" }}
+  <header class="mb-8">
+    <h1 class="text-foreground mb-4 text-3xl font-bold">
+      {{ .Title }}
+    </h1>
+    {{ if .Content }}
+      <div class="prose prose-neutral dark:prose-invert max-w-none">
+        {{ .Content }}
+      </div>
+    {{ end }}
+  </header>
+
+  {{/* 友链卡片网格 */}}
+  {{ with .Params.friends }}
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range . }}
+        <a href="{{ .url }}"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="friend-card group bg-card border-border hover:border-primary/30 hover:bg-primary/5 focus:ring-primary/20 relative flex items-center gap-4 overflow-hidden rounded-xl border p-4 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg focus:ring-2 focus:outline-none">
+          {{/* 头像 */}}
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-muted">
+            <img src="{{ .avatar }}"
+                 alt="{{ .name }}"
+                 class="h-full w-full object-cover"
+                 loading="lazy"
+                 onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-foreground text-lg font-bold\'>{{ (substr .name 0 1) }}</span>'">
+          </div>
+          {{/* 昵称 + 描述 */}}
+          <div class="min-w-0 flex-1">
+            <h3 class="text-foreground group-hover:text-primary truncate text-base font-bold transition-colors duration-200">
+              {{ .name }}
+            </h3>
+            <p class="text-muted-foreground truncate text-sm">
+              {{ .description }}
+            </p>
+          </div>
+          {{/* 跳转图标 */}}
+          <svg class="text-muted-foreground/40 group-hover:text-primary h-5 w-5 shrink-0 transition-all duration-200 group-hover:translate-x-0.5"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M7 7h10v10"/>
+          </svg>
+        </a>
+      {{ end }}
+    </div>
+  {{ else }}
+    <p class="text-muted-foreground py-8 text-center">
+      No friends yet.
+    </p>
+  {{ end }}
+{{ end }}

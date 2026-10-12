@@ -652,44 +652,73 @@
 
 
         
-  
-
-
-  
   <header class="mb-8">
     <h1 class="text-foreground mb-4 text-3xl font-bold">
       Friends
     </h1>
-
-    
-
-
-    
     
   </header>
 
   
   
-    
-    <div class="py-16 text-center">
-      <div class="bg-muted/50 mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full">
-        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-</svg>
-      </div>
-      <h2 class="text-foreground mb-3 text-xl font-medium">
-        No content
-      </h2>
-      <a
-        href="/"
-        class="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-xl px-6 py-3 font-medium transition-colors duration-300"
-      >
-        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 12 2-2m0 0 7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-</svg>
-
-        <span>Back to home</span>
-      </a>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      
+        <a href="https://decimo.top/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="friend-card group bg-card border-border hover:border-primary/30 hover:bg-primary/5 focus:ring-primary/20 relative flex items-center gap-4 overflow-hidden rounded-xl border p-4 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg focus:ring-2 focus:outline-none">
+          
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-muted">
+            <img src="https://decimo.top/images/my-avatar.jpg"
+                 alt="decimo的小窝"
+                 class="h-full w-full object-cover"
+                 loading="lazy"
+                 onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-foreground text-lg font-bold\'>d</span>'">
+          </div>
+          
+          <div class="min-w-0 flex-1">
+            <h3 class="text-foreground group-hover:text-primary truncate text-base font-bold transition-colors duration-200">
+              decimo的小窝
+            </h3>
+            <p class="text-muted-foreground truncate text-sm">
+              Web大佬
+            </p>
+          </div>
+          
+          <svg class="text-muted-foreground/40 group-hover:text-primary h-5 w-5 shrink-0 transition-all duration-200 group-hover:translate-x-0.5"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M7 7h10v10"/>
+          </svg>
+        </a>
+      
+        <a href="https://hinanawiteriko.github.io/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="friend-card group bg-card border-border hover:border-primary/30 hover:bg-primary/5 focus:ring-primary/20 relative flex items-center gap-4 overflow-hidden rounded-xl border p-4 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg focus:ring-2 focus:outline-none">
+          
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-muted">
+            <img src="https://hinanawiteriko.github.io/avatar/avatar.jpg"
+                 alt="HinanawiTeriko"
+                 class="h-full w-full object-cover"
+                 loading="lazy"
+                 onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-foreground text-lg font-bold\'>H</span>'">
+          </div>
+          
+          <div class="min-w-0 flex-1">
+            <h3 class="text-foreground group-hover:text-primary truncate text-base font-bold transition-colors duration-200">
+              HinanawiTeriko
+            </h3>
+            <p class="text-muted-foreground truncate text-sm">
+              天子aaaaaa
+            </p>
+          </div>
+          
+          <svg class="text-muted-foreground/40 group-hover:text-primary h-5 w-5 shrink-0 transition-all duration-200 group-hover:translate-x-0.5"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M7 7h10v10"/>
+          </svg>
+        </a>
+      
     </div>
   
 
