@@ -25,7 +25,7 @@ description = "晓堃究竟是大肘子还是大手子…？"
 name = "Ray"
 url = "https://ruijian-huang.github.io/"
 avatar = "https://ruijian-huang.github.io/img/zi.jpg"
-description = "每天都要跪拜一下"
+description = "每天都要膜拜一下"
 
 [[friends]]
 name = "dxfaker"
@@ -38,4 +38,10 @@ name = "楽楽依"
 url = "https://leyi.live/"
 avatar = "https://leyi.live/img/head.jpg"
 description = "不知道…偷来的好友…"
+
+[[friends]]
+name = "takinol"
+url = "https://takinol.github.io/"
+avatar = "https://takinol.github.io/avatar.jpg"
+description = "大佬其实是可爱小猫学长？！"
 +++
