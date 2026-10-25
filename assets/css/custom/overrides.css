@@ -340,3 +340,114 @@ article.group > a > div:hover::after,
     animation: none;
   }
 }
+
+/* ================================================================
+    15. 搜索框 — 段落定位 + "and more"
+    ================================================================ */
+.search-result-item {
+  cursor: pointer;
+}
+
+.search-result-title {
+  text-decoration: none;
+  color: var(--color-foreground);
+  transition: color 0.2s ease;
+}
+
+.search-result-item:hover .search-result-title,
+.search-result-title:hover {
+  color: var(--color-primary);
+}
+
+.search-result-snippet {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.search-result-snippet:hover {
+  color: var(--color-primary);
+}
+
+.search-result-more-wrap {
+  justify-content: flex-start;
+}
+
+.search-result-more {
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  line-height: 1.2;
+}
+
+.search-result-more:hover {
+  text-decoration: underline;
+}
+
+.search-result-more-list {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+  padding-left: 0.75rem;
+}
+
+.search-result-more-list.hidden {
+  display: none;
+}
+
+.search-result-more-list .search-result-snippet + .search-result-snippet {
+  margin-top: 0.35rem;
+}
+
+/* ================================================================
+    16. Categories 页 — 分组列表（日期 + 标题行）
+    ================================================================ */
+.category-article-row {
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.category-article-row:hover {
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+}
+
+.category-article-row:hover span,
+.category-article-row:hover time {
+  color: var(--color-primary);
+}
+
+.category-group {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ================================================================
+    17. 页脚访客统计（Busuanzi）
+    ================================================================ */
+.visitor-stats-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.visitor-stats-item svg {
+  opacity: 0.7;
+}
+
+.visitor-stats-value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.visitor-stats-sep {
+  opacity: 0.5;
+}
+
+/* Busuanzi 默认会隐藏容器，这里强制显示以便始终可见 */
+#busuanzi_container_site_uv,
+#busuanzi_container_site_pv {
+  display: inline !important;
+}

@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://yinniao23.github.io/Lynn_blog'
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = false
 title = '殷袅的博客 - Blessing you'
@@ -192,9 +192,16 @@ mainSections = ["posts"]
     [params.post.license]
       show = false
 
-  # 评论系统（暂不启用外部评论）
+  # 评论系统 — Utterances（基于 GitHub Issues）
+  # 每篇文章按 pathname 生成独立 issue，各文章评论区互相独立
   [params.comments]
-    enabled = false
+    enabled = true
+    system = "utterances"
+    [params.comments.utterances]
+      repo = "Yinniao23/Lynn_blog"
+      issueTerm = "pathname"
+      label = "comment"
+      theme = "preferred-color-scheme"
 
   # 阅读进度条
   [params.readingProgress]

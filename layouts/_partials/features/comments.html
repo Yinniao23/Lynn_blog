@@ -1,0 +1,57 @@
+{{/* 评论系统组件
+
+  样式与首页留言板（guestbook）保持一致：外层透明，无白色卡片背景。
+
+  支持多种评论系统：
+  - Giscus (基于 GitHub Discussions)
+  - Disqus / Utterances / Waline / Artalk / Twikoo / Comentario
+
+  @context {page} . 当前文章页面对象
+*/}}
+
+{{- $commentsConfig := dict
+  "enabled" false
+  "system" ""
+-}}
+
+{{/* 合并全局配置 */}}
+{{- with .Site.Params.comments -}}
+  {{- $commentsConfig = merge $commentsConfig . -}}
+{{- end -}}
+
+{{/* 合并页面配置 */}}
+{{- with .Params.comments -}}
+  {{- $commentsConfig = merge $commentsConfig . -}}
+{{- end -}}
+
+{{/* 判断是否加载评论 */}}
+{{- if and $commentsConfig.enabled $commentsConfig.system -}}
+  {{- $commentSystem := $commentsConfig.system -}}
+  <section id="comments" class="comments-section mx-auto mt-12">
+    <h2 class="text-foreground mb-6 flex items-center gap-2 text-2xl font-bold">
+      {{ partial "features/icon.html" (dict "name" "message-circle" "size" "lg" "ariaLabel" "") }}
+      {{ T "comments.title" }}
+    </h2>
+
+    <div class="utterances-wrapper rounded-xl border border-border p-4">
+      {{- if eq $commentSystem "giscus" -}}
+        {{ partial "features/comments/giscus.html" (dict "Site" $.Site "Page" $ "id" "giscus-comments") }}
+      {{- else if eq $commentSystem "disqus" -}}
+        {{ partial "features/comments/disqus.html" (dict "Site" $.Site "Page" $ "id" "disqus-comments") }}
+      {{- else if eq $commentSystem "utterances" -}}
+        {{ partial "features/comments/utterances.html" (dict "Site" $.Site "Page" $ "id" "utterances-comments") }}
+      {{- else if eq $commentSystem "waline" -}}
+        {{ partial "features/comments/waline.html" (dict "Site" $.Site "Page" $ "id" "waline-comments") }}
+      {{- else if eq $commentSystem "artalk" -}}
+        {{ partial "features/comments/artalk.html" (dict "Site" $.Site "Page" $ "id" "artalk-comments") }}
+      {{- else if eq $commentSystem "twikoo" -}}
+        {{ partial "features/comments/twikoo.html" (dict "Site" $.Site "Page" $ "id" "twikoo-comments") }}
+      {{- else if eq $commentSystem "comentario" -}}
+        {{ partial "features/comments/comentario.html" (dict "Site" $.Site "Page" $ "id" "comentario-comments") }}
+      {{- else -}}
+        {{- /* 不支持的评论系统 */ -}}
+        {{ partial "features/comments/notice.html" (dict "icon" "alert-circle") }}
+      {{- end -}}
+    </div>
+  </section>
+{{- end -}}

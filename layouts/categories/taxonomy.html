@@ -1,0 +1,110 @@
+{{ define "main" }}
+  <!-- 页面标题和描述 -->
+  <header class="mb-8">
+    <h1 class="text-foreground mb-4 text-3xl font-bold">
+      {{ .Title }}
+    </h1>
+
+    {{ if .Content }}
+      <div class="prose prose-neutral dark:prose-invert mb-6 max-w-none">
+        {{ .Content }}
+      </div>
+    {{ else if .Description }}
+      <p class="text-muted-foreground mb-6">
+        {{ .Description }}
+      </p>
+    {{ end }}
+
+
+    <!-- 统计信息 -->
+    <div class="text-muted-foreground flex items-center gap-4 text-sm">
+      <div class="flex items-center gap-1">
+        {{ partial "features/icon.html" (dict "name" "categories" "size" "sm" "ariaLabel" "") }}
+        <span>
+          {{ T "list.pages" (dict "count" (len .Data.Terms)) }}
+        </span>
+      </div>
+    </div>
+  </header>
+
+  {{ $terms := .Data.Terms.ByCount }}
+
+  {{ if $terms }}
+    <!-- 标签与分类列表合并为一块：每个分类一行（一行一栏） -->
+    <div class="flex flex-col gap-4">
+      {{ range $terms }}
+        {{ $termPage := .Page }}
+        <section class="category-group bg-card border-border rounded-xl border p-5">
+          <h2 class="mb-4">
+            <a
+              href="{{ $termPage.RelPermalink }}"
+              class="bg-muted/40 border-border hover:bg-primary/10 hover:text-primary hover:border-primary/50 focus:ring-primary/20 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:outline-none"
+              data-taxonomy="{{ $.Data.Singular }}"
+            >
+              <span class="text-foreground font-semibold transition-colors duration-200">
+                {{ $termPage.LinkTitle }}
+              </span>
+              <span class="bg-primary/10 text-primary rounded-full px-2 py-0.5 text-xs font-medium">
+                {{ .Count }}
+              </span>
+            </a>
+          </h2>
+          <ul class="category-article-list">
+            {{ range $termPage.Pages.ByDate.Reverse }}
+              <li>
+                <a href="{{ .RelPermalink }}" class="category-article-row flex items-center gap-4 py-1.5">
+                  <time
+                    class="text-muted-foreground shrink-0 text-sm tabular-nums"
+                    datetime="{{ .Date.Format `2006-01-02` }}"
+                  >
+                    {{ .Date.Format "2006-01-02" }}
+                  </time>
+                  <span class="text-foreground text-sm transition-colors duration-200">{{ .Title }}</span>
+                </a>
+              </li>
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+    </div>
+
+    <!-- 全部文章：未选择分类时也能一览所有文章（日期 + 标题） -->
+    {{ $allPages := where site.RegularPages "Section" "in" site.MainSections }}
+    {{ if $allPages }}
+      <section class="category-group mt-10">
+        <h2 class="text-foreground mt-6 mb-4 flex items-center gap-2 text-xl font-bold">
+          {{ partial "features/icon.html" (dict "name" "file-text" "size" "md" "ariaLabel" "") }}
+          <span>全部文章</span>
+          <span class="bg-muted/60 text-muted-foreground rounded-full px-2 py-0.5 text-xs font-medium">
+            {{ len $allPages }}
+          </span>
+        </h2>
+        <ul class="category-article-list bg-card border-border divide-border divide-y overflow-hidden rounded-xl border">
+          {{ range $allPages.ByDate.Reverse }}
+            <li>
+              <a href="{{ .RelPermalink }}" class="category-article-row flex items-center gap-4 px-4 py-3">
+                <time
+                  class="text-muted-foreground shrink-0 text-sm tabular-nums"
+                  datetime="{{ .Date.Format `2006-01-02` }}"
+                >
+                  {{ .Date.Format "2006-01-02" }}
+                </time>
+                <span class="text-foreground font-medium">{{ .Title }}</span>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  {{ else }}
+    <!-- 空状态 -->
+    <div class="py-16 text-center">
+      <div class="bg-muted/50 mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full">
+        {{ partial "features/icon.html" (dict "name" "categories" "size" "xl" "ariaLabel" "") }}
+      </div>
+      <h2 class="text-foreground mb-3 text-xl font-medium">
+        {{ T "article.empty" }}
+      </h2>
+    </div>
+  {{ end }}
+{{ end }}

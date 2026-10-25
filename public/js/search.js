@@ -384,21 +384,62 @@
       searchStats.textContent = template.replace("%d", count);
     }
     function createResultElement(result, query, index) {
-      const link = document.createElement("a");
-      link.href = result.permalink;
-      link.dataset.index = String(index);
-      link.className = "search-result-item block rounded-lg p-4 transition-colors duration-200 hover:bg-primary/10";
-      link.setAttribute("role", "listitem");
+      const item = document.createElement("div");
+      item.dataset.index = String(index);
+      item.className = "search-result-item block rounded-lg p-4 transition-colors duration-200 hover:bg-primary/10";
+      item.setAttribute("role", "listitem");
       const container = document.createElement("div");
       container.className = "flex flex-col gap-2";
       const title = document.createElement("h3");
-      title.className = "text-foreground line-clamp-1 text-base font-semibold";
-      title.appendChild(createHighlightedFragment(result.title || "", result.keywords));
-      const summary = document.createElement("p");
-      summary.className = "text-muted-foreground line-clamp-2 text-sm";
-      summary.appendChild(
-        createExcerptFragment(result.summary || result.content || "", result.keywords, 140)
-      );
+      title.className = "text-base font-semibold";
+      const titleLink = document.createElement("a");
+      titleLink.href = result.permalink;
+      titleLink.className = "search-result-title text-foreground transition-colors";
+      titleLink.appendChild(createHighlightedFragment(result.title || "", result.keywords));
+      title.appendChild(titleLink);
+      container.appendChild(title);
+      const occurrences = collectOccurrences(result, result.keywords);
+      if (occurrences.length > 0) {
+        const first = occurrences[0];
+        const snippetLink = document.createElement("a");
+        snippetLink.href = occurrenceUrl(result.permalink, first.anchor);
+        snippetLink.className = "search-result-snippet block text-sm text-muted-foreground transition-colors";
+        snippetLink.appendChild(buildContextFragment(first, result.keywords));
+        container.appendChild(snippetLink);
+        if (occurrences.length > 1) {
+          const moreWrap = document.createElement("div");
+          moreWrap.className = "search-result-more-wrap mt-1 flex items-center";
+          const moreBtn = document.createElement("button");
+          moreBtn.type = "button";
+          moreBtn.className = "search-result-more text-primary text-xs font-medium";
+          moreBtn.textContent = "and more";
+          moreWrap.appendChild(moreBtn);
+          container.appendChild(moreWrap);
+          const moreList = document.createElement("div");
+          moreList.className = "search-result-more-list mt-2 hidden flex flex-col gap-1";
+          occurrences.forEach((occurrence) => {
+            const link = document.createElement("a");
+            link.href = occurrenceUrl(result.permalink, occurrence.anchor);
+            link.className = "search-result-snippet block text-xs text-muted-foreground transition-colors";
+            link.appendChild(buildContextFragment(occurrence, result.keywords));
+            moreList.appendChild(link);
+          });
+          container.appendChild(moreList);
+          moreBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            const nowHidden = moreList.classList.toggle("hidden");
+            moreBtn.textContent = nowHidden ? "and more" : "show less";
+          });
+        }
+      } else {
+        const summary = document.createElement("p");
+        summary.className = "text-muted-foreground line-clamp-2 text-sm";
+        summary.appendChild(
+          createExcerptFragment(result.summary || result.content || "", result.keywords, 140)
+        );
+        container.appendChild(summary);
+      }
       const meta = document.createElement("div");
       meta.className = "text-muted-foreground flex flex-wrap items-center gap-2 text-xs";
       const metaParts = [];
@@ -412,13 +453,110 @@
         span.textContent = part;
         meta.appendChild(span);
       });
-      container.appendChild(title);
-      container.appendChild(summary);
       if (metaParts.length > 0) {
         container.appendChild(meta);
       }
-      link.appendChild(container);
-      return link;
+      item.appendChild(container);
+      return item;
+    }
+    function occurrenceUrl(permalink, anchor) {
+      if (!anchor) return permalink;
+      const base = String(permalink || "").split("#")[0];
+      return `${base}#${anchor}`;
+    }
+    function buildContextFragment(occurrence, keywords) {
+      const text = occurrence.text || "";
+      const before = 30;
+      const after = 70;
+      const start = Math.max(0, occurrence.index - before);
+      const end = Math.min(text.length, occurrence.index + occurrence.length + after);
+      const excerpt = text.slice(start, end);
+      const fragment = createHighlightedFragment(excerpt, keywords);
+      if (start > 0) fragment.prepend(document.createTextNode("\u2026 "));
+      if (end < text.length) fragment.append(document.createTextNode(" \u2026"));
+      return fragment;
+    }
+    function collectOccurrences(result, keywords) {
+      const html = result.contentHtml;
+      if (!html || !Array.isArray(keywords) || keywords.length === 0) return [];
+      let doc;
+      try {
+        doc = new DOMParser().parseFromString(html, "text/html");
+      } catch (_) {
+        return [];
+      }
+      if (!doc || !doc.body) return [];
+      const segments = buildTextSegments(doc.body);
+      const occurrences = [];
+      segments.forEach((segment) => {
+        const lower = segment.text.toLowerCase();
+        let from = 0;
+        while (from < lower.length) {
+          let matchIndex = -1;
+          let matchLength = 0;
+          for (let i = 0; i < keywords.length; i += 1) {
+            const keyword = keywords[i];
+            if (!keyword) continue;
+            const found = lower.indexOf(keyword, from);
+            if (found !== -1 && (matchIndex === -1 || found < matchIndex)) {
+              matchIndex = found;
+              matchLength = keyword.length;
+            }
+          }
+          if (matchIndex === -1) break;
+          occurrences.push({
+            anchor: segment.anchor,
+            text: segment.text,
+            index: matchIndex,
+            length: matchLength
+          });
+          from = matchIndex + Math.max(matchLength, 1);
+        }
+      });
+      return occurrences;
+    }
+    function buildTextSegments(root) {
+      const segments = [];
+      let currentAnchor = "";
+      const headingTags = { H1: 1, H2: 1, H3: 1, H4: 1, H5: 1, H6: 1 };
+      const blockTags = {
+        H1: 1,
+        H2: 1,
+        H3: 1,
+        H4: 1,
+        H5: 1,
+        H6: 1,
+        P: 1,
+        LI: 1,
+        BLOCKQUOTE: 1,
+        PRE: 1,
+        TD: 1,
+        TH: 1,
+        DT: 1,
+        DD: 1,
+        FIGCAPTION: 1
+      };
+      function walk(element) {
+        const tag = element.tagName;
+        if (!tag) return;
+        if (headingTags[tag] && element.id) {
+          currentAnchor = element.id;
+        }
+        if (blockTags[tag]) {
+          const text = (element.textContent || "").replace(/\s+/g, " ").trim();
+          if (text) segments.push({ anchor: currentAnchor, text });
+          return;
+        }
+        const children = element.children;
+        for (let i = 0; i < children.length; i += 1) {
+          walk(children[i]);
+        }
+      }
+      const topChildren = root.children;
+      for (let i = 0; i < topChildren.length; i += 1) {
+        walk(topChildren[i]);
+      }
+      return segments;
     }
     function createExcerptFragment(text, keywords, maxLength) {
       if (!text) return document.createTextNode("");
@@ -516,7 +654,8 @@
     function selectResult() {
       if (selectedIndex < 0 || selectedIndex >= currentResults.length || !searchItems) return;
       const selectedElement = searchItems.querySelector(`[data-index="${selectedIndex}"]`);
-      selectedElement?.click();
+      const link = selectedElement ? selectedElement.querySelector("a[href]") : null;
+      if (link) link.click();
     }
     window.Search = {
       show: showSearch,
