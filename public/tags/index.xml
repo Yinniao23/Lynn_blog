@@ -1,1 +1,73 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on 殷袅的博客 - Blessing you</title><link>https://yinniao23.github.io/Lynn_blog/tags/</link><description>Recent content in Tags on 殷袅的博客 - Blessing you</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 11 Oct 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://yinniao23.github.io/Lynn_blog/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>CSS</title><link>https://yinniao23.github.io/Lynn_blog/tags/css/</link><pubDate>Sun, 11 Oct 2026 12:00:00 +0800</pubDate><guid>https://yinniao23.github.io/Lynn_blog/tags/css/</guid><description/></item><item><title>UI</title><link>https://yinniao23.github.io/Lynn_blog/tags/ui/</link><pubDate>Sun, 11 Oct 2026 12:00:00 +0800</pubDate><guid>https://yinniao23.github.io/Lynn_blog/tags/ui/</guid><description/></item><item><title>设计</title><link>https://yinniao23.github.io/Lynn_blog/tags/%E8%AE%BE%E8%AE%A1/</link><pubDate>Sun, 11 Oct 2026 12:00:00 +0800</pubDate><guid>https://yinniao23.github.io/Lynn_blog/tags/%E8%AE%BE%E8%AE%A1/</guid><description/></item><item><title>GitHub</title><link>https://yinniao23.github.io/Lynn_blog/tags/github/</link><pubDate>Sun, 11 Oct 2026 11:00:00 +0800</pubDate><guid>https://yinniao23.github.io/Lynn_blog/tags/github/</guid><description/></item><item><title>Hugo</title><link>https://yinniao23.github.io/Lynn_blog/tags/hugo/</link><pubDate>Sun, 11 Oct 2026 11:00:00 +0800</pubDate><guid>https://yinniao23.github.io/Lynn_blog/tags/hugo/</guid><description/></item><item><title>教程</title><link>https://yinniao23.github.io/Lynn_blog/tags/%E6%95%99%E7%A8%8B/</link><pubDate>Sun, 11 Oct 2026 11:00:00 +0800</pubDate><guid>https://yinniao23.github.io/Lynn_blog/tags/%E6%95%99%E7%A8%8B/</guid><description/></item><item><title>公告</title><link>https://yinniao23.github.io/Lynn_blog/tags/%E5%85%AC%E5%91%8A/</link><pubDate>Sun, 11 Oct 2026 10:00:00 +0800</pubDate><guid>https://yinniao23.github.io/Lynn_blog/tags/%E5%85%AC%E5%91%8A/</guid><description/></item><item><title>随笔</title><link>https://yinniao23.github.io/Lynn_blog/tags/%E9%9A%8F%E7%AC%94/</link><pubDate>Sun, 11 Oct 2026 10:00:00 +0800</pubDate><guid>https://yinniao23.github.io/Lynn_blog/tags/%E9%9A%8F%E7%AC%94/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tags on 殷袅的博客 - Blessing you</title>
+		<link>http://localhost:1313/Lynn_blog/tags/</link>
+		<description>Recent content in Tags on 殷袅的博客 - Blessing you</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 11 Oct 2026 12:00:00 +0800</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/Lynn_blog/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>CSS</title>
+				<link>http://localhost:1313/Lynn_blog/tags/css/</link>
+				<pubDate>Sun, 11 Oct 2026 12:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/Lynn_blog/tags/css/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>UI</title>
+				<link>http://localhost:1313/Lynn_blog/tags/ui/</link>
+				<pubDate>Sun, 11 Oct 2026 12:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/Lynn_blog/tags/ui/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>设计</title>
+				<link>http://localhost:1313/Lynn_blog/tags/%E8%AE%BE%E8%AE%A1/</link>
+				<pubDate>Sun, 11 Oct 2026 12:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/Lynn_blog/tags/%E8%AE%BE%E8%AE%A1/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>GitHub</title>
+				<link>http://localhost:1313/Lynn_blog/tags/github/</link>
+				<pubDate>Sun, 11 Oct 2026 11:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/Lynn_blog/tags/github/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Hugo</title>
+				<link>http://localhost:1313/Lynn_blog/tags/hugo/</link>
+				<pubDate>Sun, 11 Oct 2026 11:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/Lynn_blog/tags/hugo/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>教程</title>
+				<link>http://localhost:1313/Lynn_blog/tags/%E6%95%99%E7%A8%8B/</link>
+				<pubDate>Sun, 11 Oct 2026 11:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/Lynn_blog/tags/%E6%95%99%E7%A8%8B/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>公告</title>
+				<link>http://localhost:1313/Lynn_blog/tags/%E5%85%AC%E5%91%8A/</link>
+				<pubDate>Sun, 11 Oct 2026 10:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/Lynn_blog/tags/%E5%85%AC%E5%91%8A/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>随笔</title>
+				<link>http://localhost:1313/Lynn_blog/tags/%E9%9A%8F%E7%AC%94/</link>
+				<pubDate>Sun, 11 Oct 2026 10:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/Lynn_blog/tags/%E9%9A%8F%E7%AC%94/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

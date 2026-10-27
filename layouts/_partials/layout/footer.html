@@ -48,20 +48,20 @@
       </p>
 
       <!-- 访客统计：总访客数 / 总访问量（Busuanzi） -->
-      <p class="visitor-stats mb-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 md:justify-start">
+      <p class="visitor-stats mb-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 md:justify-start">
         <span class="visitor-stats-item">
           {{ partial "features/icon.html" (dict "name" "user" "size" "sm" "ariaLabel" "") }}
           <span>总访客数</span>
           <span id="busuanzi_container_site_uv" class="visitor-stats-value">
-            <span id="busuanzi_value_site_uv">--</span>
+            <span id="busuanzi_value_site_uv">-1</span>
           </span>
         </span>
-        <span class="visitor-stats-sep" aria-hidden="true">·</span>
+        <span class="visitor-stats-sep" style="margin: 0 4px;" aria-hidden="true"></span>
         <span class="visitor-stats-item">
           {{ partial "features/icon.html" (dict "name" "chart" "size" "sm" "ariaLabel" "") }}
           <span>总访问量</span>
           <span id="busuanzi_container_site_pv" class="visitor-stats-value">
-            <span id="busuanzi_value_site_pv">--</span>
+            <span id="busuanzi_value_site_pv">0</span>
           </span>
         </span>
       </p>
@@ -113,4 +113,4 @@
 </footer>
 
 <!-- 不蒜子（Busuanzi）访客统计脚本 -->
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!--<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
