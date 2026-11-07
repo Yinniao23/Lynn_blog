@@ -108,7 +108,6 @@
 
 
 
-
     
     <script>(function(){const e=document.documentElement,o=localStorage.getItem("theme")||"system",m=localStorage.getItem("colorScheme")||"shadcn",n=Number.parseInt(localStorage.getItem("contentWidth"),10),d=Number.isInteger(n)&&n>=40&&n<=90;d&&e.style.setProperty("--content-width",`${n}rem`),e.setAttribute("data-theme",m);const s=localStorage.getItem("tocPinned");(s==="true"||s==="false")&&e.setAttribute("data-toc-pinned",s);const t=Number.parseFloat(getComputedStyle(e).fontSize)||16,u="56rem",i=Number.parseFloat(u);let a=56*t;Number.isFinite(i)&&(a=/r?em\s*$/.test(u)?i*t:i),d&&(a=n*t);const r=e.clientWidth,c=Math.max(0,(r-Math.min(a,r))/2);let l="narrow";r>=64*t&&(c>=13*t?l="wide":c>=2*t&&(l="tight")),e.setAttribute("data-toc-space",l),e.style.setProperty("--toc-gutter",`${Math.round(c)}px`);function h(){o==="dark"||o==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches?e.classList.add("dark"):e.classList.remove("dark")}h(),o==="system"&&window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",h)})()</script>
   </head><body class="bg-background text-foreground min-h-screen antialiased">

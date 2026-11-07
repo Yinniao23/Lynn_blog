@@ -1,0 +1,104 @@
+{{/* KaTeX 数学公式支持（本地自托管版本）
+
+  原主题从 cdn.jsdelivr.net 加载 KaTeX，该 CDN 在部分网络环境不可达，
+  导致公式无法渲染。此覆盖改为加载 static/katex/ 下的本地文件：
+    - static/katex/katex.min.css
+    - static/katex/katex.min.js
+    - static/katex/contrib/auto-render.min.js
+    - static/katex/fonts/*（CSS 相对引用）
+
+  支持全局配置和页面级配置，包括自定义 delimiter。
+*/}}
+
+{{/* 获取全局配置 */}}
+{{- $globalKatex := site.Params.katex -}}
+{{- $globalEnabled := false -}}
+{{- $globalDelimiters := slice -}}
+
+{{- if $globalKatex -}}
+  {{- if eq (printf "%T" $globalKatex) "bool" -}}
+    {{- $globalEnabled = $globalKatex -}}
+  {{- else -}}
+    {{- $globalEnabled = $globalKatex.enabled | default false -}}
+    {{- $globalDelimiters = $globalKatex.delimiters -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* 获取页面级配置 */}}
+{{- $pageKatex := .Params.katex -}}
+{{- $pageEnabled := false -}}
+{{- $pageDelimiters := slice -}}
+
+{{- if $pageKatex -}}
+  {{- if eq (printf "%T" $pageKatex) "bool" -}}
+    {{- $pageEnabled = $pageKatex -}}
+  {{- else -}}
+    {{- $pageEnabled = $pageKatex.enabled | default false -}}
+    {{- $pageDelimiters = $pageKatex.delimiters -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* 检查是否需要加载 KaTeX */}}
+{{- $featureEnabled := or $globalEnabled $pageEnabled -}}
+{{- $contentToScan := .Content -}}
+{{- $hasBlockMath := gt (len (findRE `\$\$` $contentToScan)) 0 -}}
+{{- $hasParenMath := gt (len (findRE `\\\(` $contentToScan)) 0 -}}
+{{- $hasBracketMath := gt (len (findRE `\\\[` $contentToScan)) 0 -}}
+{{- $hasInlineMath := gt (len (findRE `(^|[^$])\$[^$\n]+\$` $contentToScan)) 0 -}}
+{{- $shouldLoad := and $featureEnabled (or $hasBlockMath $hasParenMath $hasBracketMath $hasInlineMath) -}}
+
+{{- if $shouldLoad -}}
+  <!-- KaTeX 数学公式支持（本地自托管） -->
+  <link
+    rel="stylesheet"
+    href="{{ `katex/katex.min.css` | relURL }}"
+  />
+  <script
+    defer
+    src="{{ `katex/katex.min.js` | relURL }}"
+  ></script>
+  <script
+    defer
+    src="{{ `katex/contrib/auto-render.min.js` | relURL }}"
+  ></script>
+
+  <script>
+    function initKaTeX() {
+      if (typeof renderMathInElement === "undefined") {
+        setTimeout(initKaTeX, 100);
+        return;
+      }
+
+      {{- $delimiters := slice -}}
+      {{- $activeDelimiters := $pageDelimiters | default $globalDelimiters -}}
+
+      {{- if $activeDelimiters -}}
+        {{- range $activeDelimiters -}}
+          {{- $delimiters = $delimiters | append . -}}
+        {{- end -}}
+      {{- else -}}
+        {{- $delimiters = slice
+          (dict "left" "$$" "right" "$$" "display" true)
+          (dict "left" "$" "right" "$" "display" false)
+          (dict "left" "\\(" "right" "\\)" "display" false)
+          (dict "left" "\\[" "right" "\\]" "display" true)
+        -}}
+      {{- end -}}
+
+      renderMathInElement(document.body, {
+        delimiters: {{ $delimiters | jsonify | safeJS }},
+        throwOnError: false,
+        errorColor: "#cc0000",
+        fleqn: false,
+        leqno: false,
+        trust: false,
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initKaTeX, { once: true });
+    } else {
+      initKaTeX();
+    }
+  </script>
+{{- end -}}

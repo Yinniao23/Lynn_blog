@@ -58,16 +58,27 @@ mainSections = ["posts"]
     [markup.goldmark.renderer]
       unsafe = true
     [markup.goldmark.extensions]
-      strikethrough = true
+      # strikethrough 会把正文里的单个 ~ 配对成 <del> 删除线（如 100~200 范围写法被误伤），禁用
+      strikethrough = false
+      # 数学公式直通：$...$ 与 $$...$$ 内容不做任何 Markdown 处理，
+      # 防止 _ 配对成斜体、^ 配对成上标而撕碎公式（KaTeX 前端渲染）
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['$$', '$$']]
+          inline = [['$', '$']]
       [markup.goldmark.extensions.extras]
+        # delete 扩展用双波浪线 ~~text~~ 表示删除线，只配对成对的 ~~，
+        # 不会误伤单个 ~（如 100~200 范围写法），可安全启用
         [markup.goldmark.extensions.extras.delete]
           enable = true
         [markup.goldmark.extensions.extras.insert]
           enable = true
         [markup.goldmark.extensions.extras.mark]
           enable = true
+        # 下标扩展会把正文里的 ~x~ 解析成下标（如 100~200 范围写法被误伤），禁用
         [markup.goldmark.extensions.extras.subscript]
-          enable = true
+          enable = false
         [markup.goldmark.extensions.extras.superscript]
           enable = true
   [markup.highlight]

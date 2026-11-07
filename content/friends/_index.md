@@ -31,7 +31,7 @@ description = "每天都要膜拜一下"
 name = "dxfaker"
 url = "https://dxfaker.top/"
 avatar = "https://dxfaker.top/_astro/avatar.Bd1YvTWL_Z2bgzTB.webp"
-description = "据说日常挂壁"
+description = "全栈大神，据说日常挂壁"
 
 [[friends]]
 name = "楽楽依"
@@ -44,4 +44,22 @@ name = "takinol"
 url = "https://takinol.github.io/"
 avatar = "https://takinol.github.io/avatar.jpg"
 description = "大佬其实是可爱小猫学长？！"
+
+[[friends]]
+name = "憨竹子"
+url = "https://moriya.bagfrog.blog/"
+avatar = "https://moriya.bagfrog.blog/_astro/datou.CKNcbI12_ZUcNOb.webp"
+description = "最反差萌的Web大肘子。"
+
+[[friends]]
+name = "FCHEN"
+url = "https://fchen-blog.top/"
+avatar = "https://fchen-blog.top/_astro/demo-avatar.BNpS-Mqb_ZvpBcW.webp"
+description = "神秘 f 大神"
+
+[[friends]]
+name = "quequ"
+url = "https://an2erika.github.io/"
+avatar = "https://an2erika.github.io/img/tx.png"
+description = "资源比我全的人"
 +++
