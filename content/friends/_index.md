@@ -60,6 +60,12 @@ description = "神秘 f 大神"
 [[friends]]
 name = "quequ"
 url = "https://an2erika.github.io/"
-avatar = "https://an2erika.github.io/img/tx.png"
+avatar = "avator_quequ.png"
 description = "资源比我全的人"
+
+[[friends]]
+name = "sn0wing"
+url = "https://snyi001.github.io/"
+avatar = "avator_snow.jpg"
+description = "来自神秘国度的仙女"
 +++

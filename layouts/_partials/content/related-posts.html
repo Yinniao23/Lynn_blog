@@ -1,0 +1,67 @@
+{{/* 相关文章组件
+
+  显示与当前文章相关的其他文章
+
+  逻辑：
+  - 仅显示同分类的文章（按日期倒序，排除自身），双向互通
+  - 同分类文章不足时也不再显示其他分类的文章（宁缺毋滥）
+  - 悬停动画无 scale（避免彩色云雾放大溢出卡片边界）
+
+  @context {page} . 当前文章页面对象
+*/}}
+
+{{/* 获取配置参数 */}}
+{{ $relatedCount := .Params.relatedPostsCount | default .Site.Params.post.relatedPostsCount | default 3 }}
+{{ $showRelated := .Params.showRelated | default .Site.Params.post.showRelated | default true }}
+
+{{/* 同分类的文章（排除自身），按日期倒序 */}}
+{{ $related := slice }}
+{{ range .GetTerms "categories" }}
+  {{ range .Pages.ByDate.Reverse }}
+    {{ if ne .RelPermalink $.RelPermalink }}
+      {{ $related = $related | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* 去重 */}}
+{{ $seen := slice }}
+{{ $unique := slice }}
+{{ range $related }}
+  {{ if not (in $seen .RelPermalink) }}
+    {{ $seen = $seen | append .RelPermalink }}
+    {{ $unique = $unique | append . }}
+  {{ end }}
+{{ end }}
+{{ $related = $unique | first $relatedCount }}
+
+{{ if and $showRelated $related }}
+  <section class="related-posts mb-12">
+    <!-- 标题 -->
+    <div class="mb-6 flex items-center gap-3">
+      {{ partial "features/icon.html" (dict "name" "related" "size" "md" "ariaLabel" "") }}
+      <h2 class="text-foreground text-2xl font-bold">
+        {{ T "article.relatedContent" }}
+      </h2>
+    </div>
+
+    <!-- 相关文章列表 -->
+    <div class="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {{ range $related }}
+        <article class="group">
+          <a href="{{ .RelPermalink }}" class="block">
+            <div
+              class="bg-card border-border hover:bg-primary/5 hover:border-primary/20 focus:ring-primary/20 flex min-h-[120px] items-center overflow-hidden rounded-xl border p-5 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg focus:ring-2 focus:outline-none"
+            >
+              <h3
+                class="text-foreground group-hover:text-primary line-clamp-3 w-full text-lg leading-snug font-semibold"
+              >
+                {{ .Title }}
+              </h3>
+            </div>
+          </a>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

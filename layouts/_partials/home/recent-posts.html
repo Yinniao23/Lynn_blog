@@ -1,0 +1,29 @@
+{{/* 最近文章区域
+
+  View all 链接改用 posts 列表页的 RelPermalink（与导航菜单一致，
+  自动带 baseURL 子路径）。原来的 relLangURL 只处理语言前缀，
+  在子路径部署（/Lynn_blog/）下生成 /posts/ 导致 404。
+*/}}
+{{ $recentPostsCount := .Site.Params.home.recentPostsCount | default 5 }}
+
+{{ $mainSections := .Site.MainSections | default (slice "posts") }}
+{{ $firstSection := index $mainSections 0 }}
+
+{{ $posts := where .Site.RegularPages "Section" $firstSection | first $recentPostsCount }}
+
+{{/* 优先用 posts 列表页的 RelPermalink，保证与站内导航一致 */}}
+{{ $viewAllUrl := "/" }}
+{{ with site.GetPage (printf "/%s" $firstSection) }}
+  {{ $viewAllUrl = .RelPermalink }}
+{{ else }}
+  {{ $viewAllUrl = printf "/%s/" $firstSection | relLangURL }}
+{{ end }}
+
+{{ partial "content/post-list.html" (dict
+  "posts" $posts
+  "title" (T "home.recentPosts")
+  "showTitle" true
+  "showViewAll" true
+  "viewAllUrl" $viewAllUrl
+  )
+}}

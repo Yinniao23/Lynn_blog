@@ -451,3 +451,82 @@ article.group > a > div:hover::after,
 #busuanzi_container_site_pv {
   display: inline !important;
 }
+
+/* ================================================================
+    18. 文章表格 — 紧凑化 + 横向滚动条
+    （原 prose 表格 padding 大、字号与正文相同，宽表撑破版面）
+    ================================================================ */
+
+/* 表格变为块级滚动容器；
+   内部 thead/tbody/tr/td 保持默认 table 布局（同一列宽算法，不错位），
+   宽表在容器内横向滚动。
+   width: fit-content 让边框只包住实际内容——小表格不会被拉满整行留白，
+   宽表格仍受 max-width 限制并出滚动条 */
+.prose table {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* 单元格紧凑化：padding 减半、字号缩小一档 */
+.prose th,
+.prose td {
+  padding-inline: calc(var(--spacing) * 2);
+  padding-block: calc(var(--spacing) * 1.5);
+  font-size: 0.875em;
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+/* 表头不换行，正文单元格长内容允许在单元格内换行 */
+.prose th {
+  white-space: nowrap;
+}
+.prose td {
+  white-space: normal;
+}
+
+/* 滚动条样式与全站一致 */
+.prose table::-webkit-scrollbar {
+  height: 8px;
+}
+.prose table::-webkit-scrollbar-track {
+  background: transparent;
+}
+.prose table::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-muted-foreground) 30%, transparent);
+  border-radius: 9999px;
+}
+.prose table::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-primary) 50%, transparent);
+}
+
+/* ================================================================
+    19. 上一篇/下一篇导航 — 两行标题与一行标题等高
+    （原卡片 min-h-[140px] + 弹性布局，标题换行时高度被拉高）
+    ================================================================ */
+.post-navigation .nav-item > a {
+  min-height: 140px;
+}
+
+/* 标题区域固定两行高度（line-clamp-2 预留），无论标题一行还是两行 */
+.post-navigation .nav-item > a h3 {
+  min-height: 2.6em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* prev/next 两张卡片同高（grid 拉伸） */
+.post-navigation > div {
+  align-items: stretch;
+}
+.post-navigation .nav-item {
+  display: flex;
+}
+.post-navigation .nav-item > a,
+.post-navigation .nav-item > div {
+  width: 100%;
+}
