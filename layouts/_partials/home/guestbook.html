@@ -6,11 +6,17 @@
     <span>Comments</span>
   </h2>
 
-  {{/* Utterances 评论组件 */}}
+  {{/* Utterances 评论组件
+
+    issue-term 用固定标识 "guestbook"（而非 pathname）：
+    留言板对应 GitHub Issue 的标题，与页面 URL 解耦——
+    以后换域名 / 换路径都不会丢失留言。
+    迁移历史留言：把旧 Issue 标题 "/Lynn_blog/" 改为 "guestbook" 即可。
+  */}}
   <div class="utterances-wrapper rounded-xl border border-border p-4">
     <script src="https://utteranc.es/client.js"
       repo="Yinniao23/Lynn_blog"
-      issue-term="pathname"
+      issue-term="guestbook"
       label="comment"
       theme="preferred-color-scheme"
       crossorigin="anonymous"

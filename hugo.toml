@@ -1,7 +1,7 @@
 baseURL = 'https://yinniao23.github.io/'
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = false
-title = '殷袅的博客 - Blessing you'
+title = '殷袅的幻想空间'
 theme = "narrow"
 
 hasCJKLanguage = true
@@ -101,7 +101,7 @@ mainSections = ["posts"]
 
 # ==================== 站点参数 ====================
 [params]
-  description = "殷袅的个人博客 —— 记录一些无聊日常"
+  description = "殷袅的幻想空间"
   keywords = ["博客", "技术", "编程", "Yinniao", "个人主页"]
   defaultAuthor = "Yinniao"
   language = "zh-CN"
@@ -115,7 +115,7 @@ mainSections = ["posts"]
   # 作者信息
   [params.author]
     name = "殷袅"
-    title = "技术探索者 · 博客作者"
+    title = "技术探索者 · 时区在伦敦之人 · 反射弧最长患者 · 上课从不准时之人 · 博客作者"
     description = "你曾相信并仍渴望相信的那一切，尽管幼稚，却也伟大。"
     avatar = "/images/avatar.jpg"
     [[params.author.social]]
