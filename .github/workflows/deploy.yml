@@ -1,0 +1,53 @@
+name: Deploy blog to yinniao23.github.io
+
+# 推送到 main 分支时自动构建，并把 public/ 发布到
+# Yinniao23/yinniao23.github.io 仓库（用户站点，根路径 https://yinniao23.github.io/）
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "deploy-user-site"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.167.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive # 主题 themes/narrow 是子模块，必须拉取
+          fetch-depth: 0
+
+      - name: Install Hugo
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
+          sudo dpkg -i ${{ runner.temp }}/hugo.deb
+          hugo version
+
+      - name: Build
+        run: hugo --gc --minify
+
+      - name: Deploy to yinniao23.github.io
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          # 跨仓库发布需要 PAT（在 Lynn_blog 仓库 Secrets 里配置 DEPLOY_TOKEN）
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
+          external_repository: Yinniao23/yinniao23.github.io
+          publish_branch: main
+          publish_dir: ./public
+          # 每次发布都是干净的单提交，不残留旧文件
+          force_orphan: true
+          commit_message: "Deploy from Lynn_blog@${{ github.sha }}"
