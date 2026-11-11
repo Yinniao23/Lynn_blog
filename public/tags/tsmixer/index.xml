@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TSMixer on 殷袅的博客 - Blessing you</title><link>https://yinniao23.github.io/Lynn_blog/tags/tsmixer/</link><description>Recent content in TSMixer on 殷袅的博客 - Blessing you</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 09 Nov 2026 10:00:00 +0800</lastBuildDate><atom:link href="https://yinniao23.github.io/Lynn_blog/tags/tsmixer/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读：TSKANMixer——融合 Kolmogorov-Arnold 网络与 MLP-Mixer 的时间序列预测模型</title><link>https://yinniao23.github.io/Lynn_blog/posts/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BBtskanmixer%E8%9E%8D%E5%90%88-kolmogorov-arnold-%E7%BD%91%E7%BB%9C%E4%B8%8E-mlp-mixer-%E7%9A%84%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B/</link><pubDate>Mon, 09 Nov 2026 10:00:00 +0800</pubDate><guid>https://yinniao23.github.io/Lynn_blog/posts/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BBtskanmixer%E8%9E%8D%E5%90%88-kolmogorov-arnold-%E7%BD%91%E7%BB%9C%E4%B8%8E-mlp-mixer-%E7%9A%84%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B/</guid><description>AAAI 2025 TSKANMixer: Kolmogorov-Arnold Networks with MLP-Mixer Model for Time Series Forecasting 阅读笔记：将 KAN 层引入全 MLP 的 TSMixer 架构，提出两种变体，在多个时序预测基准上精度优于原始 TSMixer，代价是训练速度显著变慢。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>TSMixer on 殷袅的博客 - Blessing you</title>
+		<link>http://localhost:1313/Lynn_blog/tags/tsmixer/</link>
+		<description>Recent content in TSMixer on 殷袅的博客 - Blessing you</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 09 Nov 2026 10:00:00 +0800</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/Lynn_blog/tags/tsmixer/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>论文阅读：TSKANMixer——融合 Kolmogorov-Arnold 网络与 MLP-Mixer 的时间序列预测模型</title>
+				<link>http://localhost:1313/Lynn_blog/posts/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BBtskanmixer%E8%9E%8D%E5%90%88-kolmogorov-arnold-%E7%BD%91%E7%BB%9C%E4%B8%8E-mlp-mixer-%E7%9A%84%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B/</link>
+				<pubDate>Mon, 09 Nov 2026 10:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/Lynn_blog/posts/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BBtskanmixer%E8%9E%8D%E5%90%88-kolmogorov-arnold-%E7%BD%91%E7%BB%9C%E4%B8%8E-mlp-mixer-%E7%9A%84%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B/</guid>
+				<description>AAAI 2025 TSKANMixer: Kolmogorov-Arnold Networks with MLP-Mixer Model for Time Series Forecasting 阅读笔记：将 KAN 层引入全 MLP 的 TSMixer 架构，提出两种变体，在多个时序预测基准上精度优于原始 TSMixer，代价是训练速度显著变慢。</description>
+			</item>
+	</channel>
+</rss>

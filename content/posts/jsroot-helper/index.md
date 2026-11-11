@@ -12,6 +12,8 @@ disableImageHoverZoom = true
 ## 前言
 近期深大开展期中教学评价，便想写一篇教程来介绍篡改猴脚本的安装与使用，本篇正好以教评工具为例。
 
+**有一个小问题，本篇图片有点多，加载可能会有点慢。**
+
 ## 使用工具
 - 浏览器：Microsoft Edge
 - 加速器：Watt Toolkit（原 Steam++）
