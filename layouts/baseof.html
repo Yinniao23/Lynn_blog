@@ -16,7 +16,7 @@
   {{- $mainStyleAttr := printf `style="--content-width-base: %s; max-width: var(--content-width, var(--content-width-base))"` $contentWidth -}}
 
 
-  <body class="bg-background text-foreground min-h-screen antialiased">
+  <body class="bg-background text-foreground min-h-screen antialiased{{ if .Params.disableImageHoverZoom }} no-image-hover-zoom{{ end }}">
     <main
       id="page-container"
       class="mx-auto w-full"

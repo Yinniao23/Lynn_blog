@@ -4,7 +4,7 @@ draft = false
 title = 'Hugo 搭建个人博客指南'
 summary = '从零开始使用 Hugo + Narrow 主题搭建个人博客，部署到 GitHub Pages 的完整流程。'
 tags = ['Hugo', '教程', 'GitHub']
-categories = ['技术']
+categories = ['教程']
 cover = '/images/fm2.jpg'
 +++
 
